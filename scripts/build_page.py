@@ -5,6 +5,7 @@ GitHub Pages site, with its own head and social tags).
 Usage: python3 -I scripts/build_page.py
 """
 import json
+import re
 from pathlib import Path
 
 SITE_URL = "https://danielgolliher.github.io/lawbook/"
@@ -18,6 +19,12 @@ data = json.loads((root / "data" / "laws.json").read_text(encoding="utf-8"))
 blob = json.dumps(data, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
 body = template.replace("/*__LAWS__*/", blob)
 assert "/*__LAWS__*/" not in body
+# "Data current as of" comes from the last refresh (scripts/refresh.py writes data/meta.json).
+meta_path = root / "data" / "meta.json"
+if meta_path.exists():
+    as_of = json.loads(meta_path.read_text())["asOf"]
+    body, n = re.subn(r'const TODAY = "\d{4}-\d{2}-\d{2}";', f'const TODAY = "{as_of}";', body)
+    assert n == 1
 (root / "index.html").write_text(body, encoding="utf-8")
 
 # The template opens with its <title>, font links and <style>; those belong in <head> on the web.

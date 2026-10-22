@@ -10,16 +10,16 @@ An explorer for every public law of the 119th Congress.
 
 ## Refresh with new laws
 
+A weekly scheduled task in the Claude desktop app ("Refresh 119th Congress Lawbook", Mondays 9 AM) does this automatically. To run it by hand:
+
 ```bash
 cd ~/Downloads/public-laws-119
-curl -s -o raw/api_law.json "https://api.congress.gov/v3/law/119?api_key=DEMO_KEY&limit=250&format=json"
-# then download BILLSTATUS XML, roll calls and enacted text for any new laws (see the commands in this project's history),
-python3 -I scripts/extract.py raw/api_law.json raw/billstatus data/laws_base.json
-python3 -I scripts/enrich.py data/laws_base.json raw/votes raw/text data/laws_enriched.json
-python3 -I scripts/build_data.py data/laws_enriched.json data/laws.json
-python3 -I scripts/build_page.py
+python3 -I scripts/refresh.py                 # download new laws and updated records, rebuild, print a JSON report
+# if the report lists "unreviewed" or "needsLabel" laws, add them to KIND / LABEL in scripts/build_data.py, then:
+python3 -I scripts/refresh.py --offline       # rebuild from raw/ without downloading
+python3 -I scripts/publish.py "Weekly refresh: ..."   # push this repo and the data.maximumnewyork.com mirror
 ```
 
-Update `TODAY` in `app.html`, and add any new law to `KIND` (and `LABEL` if it has no short title) in `scripts/build_data.py`; the build fails if a law has no summary sentence.
+`refresh.py` refuses to shrink the law count. New laws build even before GovInfo posts their text or CRS writes a summary: they default to "Policy change", show their official title as the summary line, and fill in on later runs. `publish.py` re-renders `docs/og-image.png`, then commits and pushes only its own changes; it skips a repo that has unpushed commits or can't fast-forward. Set `CONGRESS_API_KEY` to use your own api.data.gov key instead of `DEMO_KEY`.
 
 Sources: Congress.gov API (law list), GovInfo BILLSTATUS bulk XML (histories, sponsors, CRS summaries), GovInfo enrolled bills and slip laws (word counts, Stat. citations, long titles), House Clerk and Senate roll-call XML (party splits). congress.gov pages block curl; the API and GovInfo do not.

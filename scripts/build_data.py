@@ -10,7 +10,14 @@ from pathlib import Path
 src, out = map(Path, sys.argv[1:3])
 
 # Law type: an editorial grouping for this explorer, assigned from each CRS summary.
+# Every public law should appear in exactly one list; a law missing from all of them builds as
+# "policy" and is reported as unreviewed by scripts/refresh.py.
 KIND = {}
+for n in (1, 12, 18, 22, 26, 27, 29, 31, 32, 33, 34, 36, 38, 39, 40, 41, 42, 43, 44, 45, 54, 55, 56, 57, 58,
+          60, 62, 64, 65, 66, 67, 69, 70, 71, 72, 73, 76, 77, 82, 83, 84, 87, 88, 89, 90, 92, 95, 96, 97, 99,
+          100, 101, 102, 106, 108, 109, 110, 111, 112, 116, 118, 119, 120, 121, 123, 124, 125, 127, 129, 131,
+          134):
+    KIND[n] = "policy"
 for n in (2, 3, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 19, 20, 47, 48, 49, 50, 51, 52, 78, 85):
     KIND[n] = "rule"
 for n in (4, 21, 28, 37, 74, 75, 86, 98, 103):
@@ -66,9 +73,10 @@ LABEL = {
 GIST = {
     44: "This act reauthorizes and revises federal programs for preventing and treating substance use disorders, "
         "including opioid prevention, treatment and recovery programs first set up by the 2018 SUPPORT Act.",
-    84: "This act extends the authorities in title VII of the Foreign Intelligence Surveillance Act through "
-        "April 30, 2026. No CRS summary has been published yet; this line restates the law's official title.",
 }
+
+# Opening words of an official title that make a poor headline; such laws need a LABEL entry.
+LONG_TITLE = re.compile(r"^(To |A bill|An act|A joint resolution|Providing|Requesting|Disapproving)", re.I)
 
 ABBREV = r"(?:U\.S|e\.g|i\.e|Sec|No|Nos|Mr|Mrs|Ms|Dr|St|Jr|Sr|Inc|Co|Corp|Ft|Mt|vs|etc|Pub|L|Stat|D\.C|U\.S\.C|a\.m|p\.m)"
 
@@ -98,6 +106,11 @@ def gist_for(law):
     return None
 
 
+def needs_label(law):
+    return (law["lawType"] == "Public Law" and law["n"] not in LABEL and not law["popularTitles"]
+            and bool(LONG_TITLE.match(law["title"])))
+
+
 def headline(law):
     if law["lawType"] == "Public Law" and law["n"] in LABEL:
         return LABEL[law["n"]], True
@@ -113,6 +126,8 @@ for law in laws:
     private = law["lawType"] != "Public Law"
     kind = "honor" if private else KIND.get(law["n"], "policy")
     s = law["summary"]
+    gist = gist_for(law)
+    official = law["length"]["longTitle"] or law["officialTitle"]
     rows.append({
         "id": law["id"],
         "pvt": private,
@@ -121,13 +136,16 @@ for law in laws:
         "head": head,
         "isLabel": is_label,
         "title": law["title"],
-        "official": law["length"]["longTitle"] or law["officialTitle"],
+        "official": official,
         "popular": law["popularTitles"],
         "short": law["shortTitles"],
         "kind": kind,
         "area": law["policyArea"],
         "subjects": law["subjects"],
-        "gist": gist_for(law),
+        "gist": gist or official,
+        "gistPending": not gist,
+        "unreviewed": not private and law["n"] not in KIND,
+        "needsLabel": needs_label(law),
         "summary": {"v": s["version"], "d": s["date"], "b": s["blocks"]} if s else None,
         "intro": law["introduced"],
         "presented": law["presented"],
@@ -150,7 +168,5 @@ for law in laws:
         "reports": law["reports"],
     })
 
-missing_gist = [r["id"] for r in rows if not r["gist"]]
-assert not missing_gist, missing_gist
 out.write_text(json.dumps(rows, separators=(",", ":"), ensure_ascii=False))
 print(f"wrote {len(rows)} rows, {out.stat().st_size/1024:.0f} KB")

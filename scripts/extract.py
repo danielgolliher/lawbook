@@ -63,11 +63,16 @@ api = json.loads(api_path.read_text())
 laws = []
 for entry in api["bills"]:
     btype, bnum = entry["type"], entry["number"]
-    root = ET.parse(bs_dir / f"BILLSTATUS-119{btype.lower()}{bnum}.xml").getroot()
+    bs_path = bs_dir / f"BILLSTATUS-119{btype.lower()}{bnum}.xml"
+    if not bs_path.exists():
+        # GovInfo's bulk file can lag a day or two behind a signing; the law joins on a later run.
+        print(f"skipping {btype} {bnum}: no bill status file yet", file=sys.stderr)
+        continue
+    root = ET.parse(bs_path).getroot()
     b = root.find("bill")
-    law_el = b.find("laws/item")
-    law_type = txt(law_el, "type")
-    law_no = txt(law_el, "number")
+    # The API list is the authority on law numbers; the bill status file may not have caught up.
+    law_type = entry["laws"][0]["type"]
+    law_no = entry["laws"][0]["number"]
 
     # Titles
     titles = b.find("titles")
@@ -140,7 +145,7 @@ for entry in api["bills"]:
 
     introduced = txt(b, "introducedDate")
     became = first({"36000", "41000"})
-    signed_date = became["date"] if became else txt(b, "latestAction/actionDate")
+    signed_date = became["date"] if became else entry["latestAction"]["actionDate"]
     presented = first({"28000"})
 
     floor = []

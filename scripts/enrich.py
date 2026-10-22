@@ -90,10 +90,19 @@ for law in laws:
     for f in law["floor"]:
         if f["url"]:
             path, fn = vote_file(f["url"])
-            f.update(fn(path))
+            if path.exists():
+                f.update(fn(path))
     t = law["textUrls"]
     pl = [u for u in t.get("Public Law", []) + t.get("Private Law", []) if "/uslm/" in u]
     enr = [u for u in t.get("Enrolled Bill", []) if "/uslm/" in u] or [u for u in t.get("Enrolled Bill", []) if u.endswith(".xml")]
+    pl = [u for u in pl if (text_dir / Path(u).name).exists()]
+    enr = [u for u in enr if (text_dir / Path(u).name).exists()]
+    if not (pl or enr):
+        # Brand-new laws can appear before GovInfo posts any text.
+        law["length"] = {"words": None, "stat": None, "longTitle": None, "statPages": None}
+        law["textSource"] = None
+        law["pdfUrl"] = None
+        continue
     src = pl[0] if pl else enr[0]
     stats = text_stats(text_dir / Path(src).name)
     if pl and enr:

@@ -441,6 +441,8 @@ mark { background: var(--hl); color: var(--hl-ink); border-radius: 2px; padding:
   // ---------- derive ----------
   for (const l of LAWS) {
     l.year = l.signed.slice(0, 4);
+    l.textPending = l.words == null;
+    l.words = l.words || 0;
     l.rolls = l.floor.filter(f => f.method === "Roll call" && f.byParty);
     const split = f => {
       const r = f.byParty.R || { yea: 0, nay: 0 }, d = f.byParty.D || { yea: 0, nay: 0 };
@@ -498,7 +500,8 @@ mark { background: var(--hl); color: var(--hl-ink); border-radius: 2px; padding:
     const unprinted = LAWS.filter(l => !l.stat).length;
     $("#unprinted").textContent = unprinted;
     $("#privates").innerHTML = `Congress also enacted ${PRIV.length} private laws, which apply to named individuals rather than the public: ` +
-      PRIV.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">Private Law ${plDash(p.id)}</a> (${esc(p.head.replace(/^To authorize the President to award the Medal of Honor to /, "Medal of Honor for ").replace(/, for acts.*$/, "").replace(/\.$/, ""))}, signed ${fmt(p.signed)})`).join(" and ") + ".";
+      PRIV.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">Private Law ${plDash(p.id)}</a> (${esc(p.head.replace(/^To authorize the President to award the Medal of Honor to /, "Medal of Honor for ").replace(/, for acts.*$/, "").replace(/(?<!Jr)\.$/, ""))}, signed ${fmt(p.signed)})`)
+        .reduce((acc, item, i, all) => acc + (i === 0 ? "" : i === all.length - 1 ? (all.length > 2 ? ", and " : " and ") : ", ") + item, "") + ".";
   }
 
   // ---------- shapes ----------
@@ -709,7 +712,7 @@ mark { background: var(--hl); color: var(--hl-ink); border-radius: 2px; padding:
             <span class="kind">${glyph(l.kind, 11)}${esc(KIND[l.kind].label)}</span>
             <span>${esc(l.area)}</span>
             <span>${hl(sponsorTitle(l.sponsor))} <span class="p-${l.sponsor.party}">${sponsorTag(l.sponsor)}</span></span>
-            <span title="${num(l.words)} words"><i class="lenbar" style="width:${lw}px"></i>${compactWords(l.words)} words</span>
+            ${l.textPending ? `<span>Text not yet published</span>` : `<span title="${num(l.words)} words"><i class="lenbar" style="width:${lw}px"></i>${compactWords(l.words)} words</span>`}
           </div>
         </div>
         <div class="when"><span>${fmt(l.signed)}</span><span class="floor">${plural(l.days, "day")}</span><span class="floor">${floorShort(l)}</span></div>
@@ -897,7 +900,7 @@ mark { background: var(--hl); color: var(--hl-ink); border-radius: 2px; padding:
       [l.url, "Congress.gov", "Full history, text and amendments"],
       [l.pdf, l.textSource === "Public Law" ? "Slip law PDF" : "Enrolled bill PDF", l.textSource === "Public Law" ? "GovInfo" : "GovInfo · slip law not yet printed"],
       ...(l.cbo || []).slice(0, 3).map(c => [c.url, "CBO cost estimate", c.title ? c.title.slice(0, 60) + (c.title.length > 60 ? "…" : "") : "Congressional Budget Office"]),
-    ];
+    ].filter(([u]) => u);
     $("#paneBody").innerHTML = `
       <div class="slip"><span>PUBLIC LAW ${plDash(l.id)}—${gpo(l.signed)}</span><span>${l.stat ? l.stat.toUpperCase().replace("STAT.", "STAT.") : esc(l.bill)}</span></div>
       <h2 class="d-title" id="d-title">${esc(l.head)}</h2>
@@ -906,6 +909,7 @@ mark { background: var(--hl); color: var(--hl-ink); border-radius: 2px; padding:
       ${l.isLabel ? `<p class="d-label-note">The headline above is a short label written for this explorer. The official title follows it.</p>` : ""}
       ${!l.isLabel && !(l.short || []).length && (l.popular || []).includes(l.head) ? `<p class="d-label-note">This is the law's popular name. The enacted text carries no short title.</p>` : ""}
       <p class="d-gist">${esc(l.gist)}</p>
+      ${l.gistPending ? `<p class="d-label-note">The Congressional Research Service has not summarized this law yet, so the line above is its official title.</p>` : ""}
       <p class="enact">${isJoint ? "Resolved" : "Be it enacted"} by the Senate and House of Representatives of the United States of America in Congress assembled,</p>
       <dl class="facts">
         <div><dt>Signed</dt><dd>${fmt(l.signed)}</dd></div>
@@ -913,7 +917,7 @@ mark { background: var(--hl); color: var(--hl-ink); border-radius: 2px; padding:
         <div><dt>Time to enactment</dt><dd>${plural(daysIntro, "day")}</dd></div>
         <div><dt>Sponsor</dt><dd>${esc(sponsorTitle(l.sponsor))}<small><span style="color:var(--${l.sponsor.party === "R" ? "rep" : l.sponsor.party === "D" ? "dem" : "ind"});font-weight:600">${sponsorTag(l.sponsor)}</span></small></dd></div>
         <div><dt>Cosponsors</dt><dd>${cosTotal || "None"}${cosTotal ? `<small>${cosLine}</small>` : ""}</dd></div>
-        <div><dt>Length</dt><dd>${num(l.words)} words<small>${l.statPages ? plural(l.statPages, "page") + " in the Statutes at Large" : "Statutes at Large pages not yet assigned"}</small></dd></div>
+        <div><dt>Length</dt><dd>${l.textPending ? "Text not yet published" : num(l.words) + " words"}<small>${l.statPages ? plural(l.statPages, "page") + " in the Statutes at Large" : "Statutes at Large pages not yet assigned"}</small></dd></div>
         <div><dt>Type</dt><dd><span style="display:inline-flex;gap:6px;align-items:center">${glyph(l.kind, 12)}${esc(KIND[l.kind].label)}</span></dd></div>
         <div style="grid-column: span 2"><dt>Policy area</dt><dd><button class="tag" data-area="${esc(l.area)}">${esc(l.area)}</button></dd></div>
       </dl>
