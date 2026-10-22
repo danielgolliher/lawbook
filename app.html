@@ -1,0 +1,1010 @@
+<title>119th Congress Lawbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: a ledger of enactments. A two-year signing chart across the top, a faceted docket below,
+   and a slip-law reading pane that slides in from the right. */
+:root {
+  --paper: #f5f6f8;
+  --sheet: #ffffff;
+  --ink: #121722;
+  --ink-2: #485164;
+  --ink-3: #737c8f;
+  --rule: #dde1e8;
+  --rule-2: #eceef2;
+  --hl: #ffe45c;
+  --hl-ink: #121722;
+  --hl-soft: #fff4b8;
+  --rep: #d23c3c;
+  --dem: #2f6fd0;
+  --ind: #8b93a1;
+  --k-policy: #8b93a1;
+  --k-rule: #c2410c;
+  --k-money: #14a06e;
+  --k-honor: #6250d6;
+  --k-land: #e0a000;
+  --band: rgba(18, 23, 34, .055);
+  --shadow: 0 18px 50px rgba(18, 23, 34, .18), 0 2px 6px rgba(18, 23, 34, .08);
+  --f-display: "Old Standard TT", "Century Schoolbook", "Georgia", serif;
+  --f-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1217; --sheet: #161a21; --ink: #e9ecf1; --ink-2: #b2b9c6; --ink-3: #848c9b;
+    --rule: #2a303b; --rule-2: #20252e; --hl: #f2d544; --hl-ink: #121722; --hl-soft: #3b3518;
+    --rep: #e5605f; --dem: #5b93e8; --ind: #8d95a3;
+    --k-policy: #8d95a3; --k-rule: #e4552a; --k-money: #1ea374; --k-honor: #9085e9; --k-land: #d1a020;
+    --band: rgba(233, 236, 241, .06); --shadow: 0 18px 50px rgba(0, 0, 0, .55), 0 2px 6px rgba(0, 0, 0, .4);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1217; --sheet: #161a21; --ink: #e9ecf1; --ink-2: #b2b9c6; --ink-3: #848c9b;
+  --rule: #2a303b; --rule-2: #20252e; --hl: #f2d544; --hl-ink: #121722; --hl-soft: #3b3518;
+  --rep: #e5605f; --dem: #5b93e8; --ind: #8d95a3;
+  --k-policy: #8d95a3; --k-rule: #e4552a; --k-money: #1ea374; --k-honor: #9085e9; --k-land: #d1a020;
+  --band: rgba(233, 236, 241, .06); --shadow: 0 18px 50px rgba(0, 0, 0, .55), 0 2px 6px rgba(0, 0, 0, .4);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font: 15px/1.5 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body.locked { overflow: hidden; }
+a { color: inherit; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 3px; }
+mark { background: var(--hl); color: var(--hl-ink); border-radius: 2px; padding: 0 1px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1320px; margin: 0 auto; }
+
+/* Header */
+.masthead { padding-block: 40px 22px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 40px; align-items: end; }
+.masthead h1 {
+  font: 700 clamp(34px, 5.4vw, 58px)/1.02 var(--f-display); letter-spacing: -.01em; margin: 0; text-wrap: balance;
+}
+.masthead h1 .num { font-weight: 400; font-style: italic; }
+.dek { margin: 12px 0 0; max-width: 62ch; color: var(--ink-2); font-size: 17px; line-height: 1.5; text-wrap: pretty; }
+.asof { font-size: 13px; color: var(--ink-3); text-align: right; line-height: 1.6; }
+.asof b { color: var(--ink); font-weight: 600; }
+.tally { display: flex; gap: 28px; flex-wrap: wrap; justify-content: flex-end; margin-bottom: 8px; }
+.tally div { display: grid; }
+.tally .big { font: 400 40px/1 var(--f-display); color: var(--ink); font-variant-numeric: lining-nums tabular-nums; }
+.tally .lab { font-size: 12.5px; color: var(--ink-3); letter-spacing: .02em; margin-top: 4px; }
+
+/* Timeline */
+.ledger { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 20px 10px; }
+.ledger-head { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: baseline; justify-content: space-between; margin-bottom: 6px; }
+.ledger-head h2 { font: 700 19px/1.25 var(--f-display); margin: 0; }
+.ledger-head p { margin: 0; font-size: 13px; color: var(--ink-3); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.legend svg { flex: none; }
+.chart-scroll { overflow-x: auto; overflow-y: hidden; margin: 6px -8px 0; padding: 0 8px; scrollbar-width: thin; }
+.chart-scroll svg { display: block; }
+#chart { min-width: 860px; position: relative; }
+.mk { cursor: pointer; transition: opacity .18s ease; }
+.mk.dim { opacity: .13; }
+.mk.sel { stroke: var(--ink); stroke-width: 2.5px; paint-order: stroke; }
+.tick text, .axis-label { fill: var(--ink-3); font: 11.5px var(--f-body); }
+.axis-year { fill: var(--ink); font: 700 14px var(--f-display); }
+.band-label { fill: var(--ink-2); font: italic 12px var(--f-display); }
+.tip {
+  position: fixed; z-index: 40; pointer-events: none; max-width: 300px;
+  background: var(--ink); color: var(--paper); border-radius: 5px; padding: 8px 10px; font-size: 13px; line-height: 1.35;
+  box-shadow: 0 6px 18px rgba(0,0,0,.2);
+}
+.tip .t-n { font: 500 11.5px var(--f-mono); opacity: .75; display: block; margin-bottom: 2px; }
+.tip[hidden] { display: none; }
+
+/* Main grid */
+.main { display: grid; grid-template-columns: 272px minmax(0, 1fr); gap: 28px; padding-block: 26px 40px; align-items: start; }
+.facets { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 14px); display: grid; gap: 22px; max-height: calc(100vh - 28px); overflow-y: auto; padding-right: 4px; scrollbar-width: thin; }
+.facet h3 { font: 600 12.5px/1.2 var(--f-body); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 9px; }
+.search { position: relative; }
+.search input {
+  width: 100%; padding: 11px 12px 11px 36px; border: 1.5px solid var(--rule); border-radius: 6px; background: var(--sheet);
+  font-size: 15px; outline: none;
+}
+.search input:focus { border-color: var(--ink); }
+.search svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+.search kbd { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font: 11px var(--f-mono); color: var(--ink-3); border: 1px solid var(--rule); border-radius: 3px; padding: 1px 5px; }
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border: 1.5px solid var(--rule); border-radius: 6px; overflow: hidden; background: var(--sheet); }
+.seg button { border: 0; background: none; padding: 8px 6px; cursor: pointer; font-size: 14px; display: grid; line-height: 1.2; }
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button small { font-size: 11.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.seg button[aria-pressed="true"] small { color: inherit; opacity: .75; }
+.opts { display: grid; gap: 2px; }
+.opt {
+  display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 9px; align-items: center; text-align: left;
+  border: 0; background: none; padding: 6px 8px; border-radius: 5px; cursor: pointer; font-size: 14px; position: relative;
+}
+.opt:hover { background: var(--rule-2); }
+.opt[aria-pressed="true"] { background: var(--hl-soft); }
+.opt[aria-pressed="true"] .o-name { font-weight: 600; }
+.opt .o-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.opt .o-count { font: 12.5px var(--f-mono); color: var(--ink-3); }
+.opt[disabled] { opacity: .4; cursor: default; }
+.opt .o-bar { position: absolute; left: 33px; bottom: 2px; height: 2px; background: var(--ink-3); opacity: .35; border-radius: 1px; }
+.check { width: 16px; height: 16px; border: 1.5px solid var(--ink-3); border-radius: 3px; display: grid; place-items: center; }
+.opt[aria-pressed="true"] .check { background: var(--ink); border-color: var(--ink); }
+.opt[aria-pressed="true"] .check::after { content: ""; width: 8px; height: 4px; border: solid var(--paper); border-width: 0 0 2px 2px; transform: translateY(-1px) rotate(-45deg); }
+.dot { width: 10px; height: 10px; border-radius: 50%; margin-left: 3px; }
+.more { border: 0; background: none; color: var(--ink-2); font-size: 13px; padding: 4px 8px; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.hint { font-size: 12.5px; color: var(--ink-3); margin: 6px 8px 0; line-height: 1.4; }
+.mobile-filters { display: none; }
+
+/* Results */
+.results-head { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.count { font: 700 22px/1.2 var(--f-display); margin: 0; }
+.count small { font: 400 14px var(--f-body); color: var(--ink-2); margin-left: 6px; }
+.sortbox { display: flex; gap: 8px; align-items: center; font-size: 13.5px; color: var(--ink-2); }
+.sortbox select { border: 1.5px solid var(--rule); border-radius: 5px; background: var(--sheet); padding: 6px 28px 6px 10px; font-size: 14px; color: var(--ink); }
+.digest { display: flex; flex-wrap: wrap; gap: 6px 22px; padding: 11px 0; font-size: 13.5px; color: var(--ink-2); border-bottom: 1px solid var(--rule); }
+.digest b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 10px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); background: var(--sheet); border-radius: 999px; padding: 3px 6px 3px 11px; font-size: 13px; cursor: pointer; }
+.chip span { width: 16px; height: 16px; display: grid; place-items: center; border-radius: 50%; color: var(--ink-3); }
+.chip:hover span { background: var(--rule-2); color: var(--ink); }
+.clear { border: 0; background: none; font-size: 13px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; color: var(--ink-2); padding: 3px 6px; }
+
+.list { list-style: none; margin: 0; padding: 0; }
+.row {
+  display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 4px 18px; padding: 17px 10px 17px 4px;
+  border-bottom: 1px solid var(--rule); cursor: pointer; position: relative; border-radius: 4px;
+}
+.row:hover { background: var(--sheet); }
+.row.active { background: var(--hl-soft); }
+.row .pl { font: 400 34px/1 var(--f-display); text-align: right; font-variant-numeric: lining-nums tabular-nums; padding-top: 2px; }
+.row .pl small { display: block; font: 500 10.5px var(--f-mono); color: var(--ink-3); margin-top: 6px; letter-spacing: .02em; }
+.row .body { min-width: 0; }
+.row h4 { margin: 0; font: 600 17px/1.3 var(--f-body); text-wrap: pretty; }
+.row h4 button { all: unset; cursor: pointer; }
+.row h4 button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+.row .gist { margin: 5px 0 0; color: var(--ink-2); font-size: 14.5px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; max-width: 78ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 9px; font-size: 12.5px; color: var(--ink-3); align-items: center; }
+.meta .kind { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); font-weight: 500; }
+.meta .p-R { color: var(--rep); font-weight: 600; }
+.meta .p-D { color: var(--dem); font-weight: 600; }
+.meta .p-I { color: var(--ind); font-weight: 600; }
+.row .when { text-align: right; font-size: 13px; color: var(--ink-2); white-space: nowrap; display: grid; gap: 3px; align-content: start; padding-top: 3px; }
+.row .when .floor { font: 12px var(--f-mono); color: var(--ink-3); }
+.lenbar { display: inline-block; height: 4px; background: var(--ink-3); border-radius: 2px; vertical-align: middle; opacity: .55; margin-right: 6px; }
+.empty { padding: 50px 10px; text-align: center; color: var(--ink-2); }
+.empty b { display: block; font: 700 20px var(--f-display); color: var(--ink); margin-bottom: 6px; }
+
+/* Detail pane */
+.scrim { position: fixed; inset: 0; background: rgba(10, 13, 18, .38); z-index: 50; opacity: 0; transition: opacity .2s ease; }
+.scrim.on { opacity: 1; }
+.pane {
+  position: fixed; z-index: 60; top: 0; right: 0; bottom: 0; width: min(640px, 100%); background: var(--sheet);
+  box-shadow: var(--shadow); display: grid; grid-template-rows: auto minmax(0, 1fr);
+  transform: translateX(104%); transition: transform .26s cubic-bezier(.2, .8, .2, 1);
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); padding-right: env(safe-area-inset-right, 0px);
+}
+.pane.on { transform: none; }
+.pane-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+.pane-bar .sp { flex: 1; font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.ib { border: 1px solid var(--rule); background: var(--sheet); border-radius: 5px; height: 34px; min-width: 34px; display: inline-grid; place-items: center; cursor: pointer; padding: 0 10px; font-size: 13.5px; gap: 6px; grid-auto-flow: column; }
+.ib:hover { background: var(--rule-2); }
+.ib[disabled] { opacity: .35; cursor: default; }
+.pane-body { overflow-y: auto; padding: 26px 30px 60px; overscroll-behavior: contain; }
+.slip { border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); padding: 7px 0 6px; display: flex; justify-content: space-between; gap: 12px; font: 400 13px/1.3 var(--f-display); letter-spacing: .06em; font-variant-numeric: lining-nums; }
+.slip span:last-child { text-align: right; white-space: nowrap; }
+.d-title { font: 700 clamp(26px, 4.2vw, 34px)/1.12 var(--f-display); margin: 20px 0 8px; text-wrap: balance; }
+.d-official { font: italic 15.5px/1.5 var(--f-display); color: var(--ink-2); margin: 0; }
+.d-official b { font-style: normal; font-weight: 400; letter-spacing: .04em; }
+.d-aka { font-size: 13px; color: var(--ink-3); margin: 8px 0 0; }
+.d-label-note { font-size: 12.5px; color: var(--ink-3); margin: 6px 0 0; }
+.d-gist { font-size: 17px; line-height: 1.55; margin: 20px 0 0; text-wrap: pretty; }
+.enact { font: italic 13.5px/1.5 var(--f-display); color: var(--ink-3); margin: 18px 0 0; padding-left: 14px; border-left: 2px solid var(--rule); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 20px; margin: 24px 0 0; padding: 18px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.facts div { min-width: 0; }
+.facts dt { font-size: 12px; color: var(--ink-3); letter-spacing: .02em; }
+.facts dd { margin: 3px 0 0; font-size: 15px; font-weight: 500; overflow-wrap: anywhere; }
+.facts dd small { display: block; font-weight: 400; font-size: 12.5px; color: var(--ink-3); }
+.sec { margin-top: 30px; }
+.sec h3 { font: 700 18px/1.25 var(--f-display); margin: 0 0 12px; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.sec h3 small { font: 400 12.5px var(--f-body); color: var(--ink-3); }
+.journey-strip { position: relative; height: 34px; margin: 6px 6px 0; }
+.journey-strip .track { position: absolute; left: 0; right: 0; top: 13px; height: 6px; border-radius: 3px; background: var(--rule); }
+.journey-strip .fill { position: absolute; left: 0; top: 13px; height: 6px; border-radius: 3px; background: var(--ink); }
+.journey-strip i { position: absolute; top: 9px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--sheet); border: 2.5px solid var(--ink); }
+.journey-strip i.end { background: var(--hl); }
+.steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 116px minmax(0, 1fr) auto; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--rule); font-size: 14px; align-items: baseline; }
+.steps li .sd { font: 12.5px var(--f-mono); color: var(--ink-2); white-space: nowrap; }
+.steps li .sx { font: 12px var(--f-mono); color: var(--ink-3); }
+.vote { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.vote:first-of-type { padding-top: 2px; }
+.vote-h { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; align-items: baseline; }
+.vote-h b { font-size: 15px; }
+.vote-h span { font-size: 12.5px; color: var(--ink-3); }
+.vote-res { font: 500 13px var(--f-mono); }
+.vote-txt { font-size: 13px; color: var(--ink-2); margin: 4px 0 0; }
+.pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--rule-2); color: var(--ink-2); margin-top: 8px; }
+.split { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 6px 10px; align-items: center; margin-top: 10px; font-size: 12.5px; }
+.split .lab { color: var(--ink-3); }
+.split .bar { display: flex; gap: 2px; height: 18px; align-items: stretch; }
+.split .bar span { display: flex; align-items: center; padding: 0 5px; color: #fff; font: 500 11.5px var(--f-mono); border-radius: 2px; white-space: nowrap; overflow: hidden; min-width: 2px; }
+.split .bar .R { background: var(--rep); }
+.split .bar .D { background: var(--dem); }
+.split .bar .I { background: var(--ind); }
+.split .bar em { font: 12px var(--f-mono); color: var(--ink-3); font-style: normal; align-self: center; padding-left: 6px; }
+.summary p { margin: 0 0 11px; font-size: 15px; line-height: 1.6; max-width: 66ch; }
+.summary p.li { padding-left: 16px; position: relative; }
+.summary p.li::before { content: "•"; position: absolute; left: 2px; color: var(--ink-3); }
+.summary p.hd { font-weight: 600; margin-top: 16px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { border: 1px solid var(--rule); background: none; border-radius: 4px; padding: 3px 9px; font-size: 13px; cursor: pointer; text-align: left; }
+.tag:hover { background: var(--hl-soft); border-color: var(--hl); }
+.links { display: grid; gap: 8px; }
+.links a { display: flex; justify-content: space-between; gap: 12px; padding: 11px 13px; border: 1px solid var(--rule); border-radius: 5px; text-decoration: none; font-size: 14px; }
+.links a:hover { border-color: var(--ink); }
+.links a small { color: var(--ink-3); font-size: 12.5px; text-align: right; }
+.cite { display: flex; gap: 10px; align-items: center; margin-top: 12px; padding: 10px 12px; background: var(--paper); border-radius: 5px; font: 13px var(--f-mono); }
+.cite code { flex: 1; min-width: 0; overflow-wrap: anywhere; font: inherit; }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 9px 16px; border-radius: 6px; font-size: 14px; z-index: 80; }
+
+/* Footer */
+.foot { border-top: 2px solid var(--ink); padding-block: 22px 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px 40px; font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+.foot h2 { font: 700 16px var(--f-display); color: var(--ink); margin: 0 0 6px; }
+.foot p { margin: 0 0 8px; }
+
+@media (max-width: 960px) {
+  .main { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .facets { position: static; max-height: none; overflow: visible; display: none; padding: 16px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; }
+  .facets.open { display: grid; }
+  .mobile-filters { display: flex; gap: 10px; align-items: stretch; }
+  .mobile-filters .search { flex: 1; }
+  .facets .search.desk { display: none; }
+  .masthead { grid-template-columns: minmax(0, 1fr); padding-block: 28px 18px; }
+  .asof, .tally { text-align: left; justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .row { grid-template-columns: 44px minmax(0, 1fr); padding-right: 4px; }
+  .row .pl { font-size: 25px; }
+  .row .when { grid-column: 2; text-align: left; display: flex; flex-wrap: wrap; gap: 4px 12px; padding-top: 6px; }
+  .pane-body { padding: 20px 18px 50px; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps li { grid-template-columns: 112px minmax(0, 1fr); }
+  .steps li .sx { grid-column: 2; }
+  .ledger { padding: 14px 14px 8px; }
+  .tally { gap: 20px; }
+  .tally .big { font-size: 32px; }
+  .search kbd { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pane, .scrim, .mk { transition: none; }
+}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div>
+      <h1>119th Congress Lawbook</h1>
+      <p class="dek">Every public law enacted since the 119th Congress convened on Jan.&nbsp;3, 2025. See what each one does, who sponsored it, how it passed and how long it took.</p>
+    </div>
+    <div>
+      <div class="tally" id="tally"></div>
+      <div class="asof" id="asof"></div>
+    </div>
+  </header>
+
+  <section class="ledger" aria-labelledby="ledger-h">
+    <div class="ledger-head">
+      <div>
+        <h2 id="ledger-h">When they were signed</h2>
+        <p>Each mark is one law, stacked by the week it was signed. Click one to read it.</p>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="chart-scroll" id="chartScroll"><div id="chart"></div></div>
+  </section>
+
+  <div class="main">
+    <div class="mobile-filters">
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.2" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input id="qm" type="search" placeholder="Search laws, sponsors, subjects" aria-label="Search laws" autocomplete="off">
+      </div>
+      <button class="ib" id="filterToggle" aria-expanded="false" aria-controls="facets">Filters</button>
+    </div>
+    <aside class="facets" id="facets" aria-label="Filters">
+      <div class="search desk">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.2" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input id="q" type="search" placeholder="Search laws, sponsors, subjects" aria-label="Search laws" autocomplete="off">
+        <kbd>/</kbd>
+      </div>
+      <div class="facet"><h3>Year signed</h3><div class="seg" id="f-year"></div></div>
+      <div class="facet"><h3>Type of law</h3><div class="opts" id="f-kind"></div></div>
+      <div class="facet"><h3>How it passed</h3><div class="opts" id="f-floor"></div><p class="hint">Voice votes and unanimous consent leave no individual tally. A party-line law had at least one roll call where most Republicans and most Democrats voted opposite ways.</p></div>
+      <div class="facet"><h3>Sponsor's party</h3><div class="opts" id="f-party"></div></div>
+      <div class="facet"><h3>Started in</h3><div class="seg" id="f-origin"></div></div>
+      <div class="facet"><h3>Policy area</h3><div class="opts" id="f-area"></div></div>
+    </aside>
+
+    <section aria-labelledby="count">
+      <div class="results-head">
+        <h2 class="count" id="count" aria-live="polite"></h2>
+        <label class="sortbox">Sort
+          <select id="sort">
+            <option value="new">Newest first</option>
+            <option value="old">Oldest first</option>
+            <option value="long">Longest text</option>
+            <option value="short">Shortest text</option>
+            <option value="fast">Fastest to enactment</option>
+            <option value="slow">Slowest to enactment</option>
+            <option value="cos">Most cosponsors</option>
+          </select>
+        </label>
+      </div>
+      <div class="digest" id="digest"></div>
+      <div class="chips" id="chips"></div>
+      <ol class="list" id="list"></ol>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <div>
+      <h2>Sources</h2>
+      <p>The list of laws comes from the <a href="https://www.congress.gov/public-laws/119th-congress" target="_blank" rel="noopener">Congress.gov public laws list</a> through its API. Bill histories, sponsors, committees and Congressional Research Service summaries come from the <a href="https://www.govinfo.gov/bulkdata/BILLSTATUS/119" target="_blank" rel="noopener">GovInfo bill status files</a>. Party splits come from the <a href="https://clerk.house.gov/Votes" target="_blank" rel="noopener">House Clerk</a> and <a href="https://www.senate.gov/legislative/votes_new.htm" target="_blank" rel="noopener">Senate</a> roll-call records.</p>
+    </div>
+    <div>
+      <h2>Method</h2>
+      <p>Word counts measure the enrolled bill, the final text both chambers passed. Statutes at Large citations come from the printed slip laws; <span id="unprinted"></span> recent laws have not been printed yet. Days to enactment run from introduction to the date the law was signed.</p>
+      <p>The five types of law and the short headlines for laws that only have a long official title were written for this explorer. Official titles appear on every law's page.</p>
+    </div>
+    <div>
+      <h2>Not shown</h2>
+      <p id="privates"></p>
+    </div>
+  </footer>
+</div>
+
+<div class="tip" id="tip" hidden></div>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="pane" id="pane" aria-labelledby="d-title" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="pane-bar">
+    <button class="ib" id="prev" aria-label="Previous law" title="Previous law (←)"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="ib" id="next" aria-label="Next law" title="Next law (→)"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <span class="sp" id="pos"></span>
+    <button class="ib" id="close" aria-label="Close">Close <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="pane-body" id="paneBody"></div>
+</aside>
+
+<script type="application/json" id="laws-data">/*__LAWS__*/</script>
+<script>
+(() => {
+  "use strict";
+  const ALL = JSON.parse(document.getElementById("laws-data").textContent);
+  const PRIV = ALL.filter(l => l.pvt);
+  const LAWS = ALL.filter(l => !l.pvt);
+  const TODAY = "2026-10-22";
+  const CONGRESS_START = "2025-01-03", CONGRESS_END = "2027-01-03";
+
+  const KINDS = [
+    { key: "policy", label: "Policy change", shape: "circle" },
+    { key: "rule", label: "Overturns a rule", shape: "down" },
+    { key: "land", label: "Land & places", shape: "up" },
+    { key: "honor", label: "Honors & names", shape: "diamond" },
+    { key: "money", label: "Spending & budget", shape: "square" },
+  ];
+  const KIND = Object.fromEntries(KINDS.map(k => [k.key, k]));
+  const FLOORS = [
+    { key: "none", label: "No recorded vote" },
+    { key: "bi", label: "Bipartisan roll call" },
+    { key: "party", label: "Party-line roll call" },
+  ];
+  const PARTY = { R: "Republican", D: "Democrat", I: "Independent" };
+  const KIND_HINT = {
+    policy: "Creates, changes or extends a federal program, requirement or authority.",
+    rule: "A resolution of disapproval that voids an agency rule (Congressional Review Act) or a D.C. Council act.",
+    land: "Moves, protects or redraws specific land, parks, water systems or tribal holdings.",
+    honor: "Names a building or site, awards a medal or marks an anniversary.",
+    money: "Appropriations, continuing resolutions, rescissions and budget reconciliation.",
+  };
+
+  // ---------- helpers ----------
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const num = n => (n ?? 0).toLocaleString("en-US");
+  const AP = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+  const GPO = ["JAN.", "FEB.", "MAR.", "APR.", "MAY", "JUNE", "JULY", "AUG.", "SEPT.", "OCT.", "NOV.", "DEC."];
+  const ymd = iso => iso.split("-").map(Number);
+  const fmt = iso => { if (!iso) return ""; const [y, m, d] = ymd(iso); return `${AP[m - 1]} ${d}, ${y}`; };
+  const fmtShort = iso => { const [, m, d] = ymd(iso); return `${AP[m - 1]} ${d}`; };
+  const gpo = iso => { const [y, m, d] = ymd(iso); return `${GPO[m - 1]} ${d}, ${y}`; };
+  const dayNum = iso => { const [y, m, d] = ymd(iso); return Date.UTC(y, m - 1, d) / 864e5; };
+  const plDash = id => id.replace("-", "–");
+  const median = a => { if (!a.length) return 0; const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  const plural = (n, one, many) => `${num(n)} ${n === 1 ? one : (many || one + "s")}`;
+  const compactWords = n => n >= 1e6 ? (n / 1e6).toFixed(2).replace(/\.?0+$/, "") + " million" : n >= 1e4 ? Math.round(n / 1e3) + ",000" : num(n);
+
+  function sponsorTitle(s) {
+    const pre = s.chamber === "Senate" ? "Sen." : (s.full || "").startsWith("Del.") ? "Del." : (s.full || "").startsWith("Res.") ? "Res. Comm." : "Rep.";
+    return `${pre} ${s.name}`;
+  }
+  function sponsorTag(s) { return `${s.party}-${s.state}${s.district && s.district !== "0" ? "-" + s.district : ""}`; }
+
+  // ---------- derive ----------
+  for (const l of LAWS) {
+    l.year = l.signed.slice(0, 4);
+    l.rolls = l.floor.filter(f => f.method === "Roll call" && f.byParty);
+    const split = f => {
+      const r = f.byParty.R || { yea: 0, nay: 0 }, d = f.byParty.D || { yea: 0, nay: 0 };
+      return (r.yea > r.nay) !== (d.yea > d.nay);
+    };
+    l.floorClass = !l.rolls.length ? "none" : l.rolls.some(split) ? "party" : "bi";
+    l.cosTotal = (l.cos.R || 0) + (l.cos.D || 0) + (l.cos.I || 0);
+    l.hay = [l.id, plDash(l.id), "pub. l. " + l.id, "public law " + l.id, l.bill, l.bill.replace(/\s/g, ""), l.head, l.title, l.official, ...(l.popular || []), ...(l.short || []),
+      l.gist, l.area, ...(l.subjects || []), l.sponsor.name, l.sponsor.state, ...(l.committees || []).map(c => c.name)].join(" \u0001 ").toLowerCase();
+    l.week = Math.floor((dayNum(l.signed) - dayNum("2024-12-30")) / 7);
+  }
+  const AREAS = Object.entries(LAWS.reduce((m, l) => (m[l.area] = (m[l.area] || 0) + 1, m), {})).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(x => x[0]);
+  const byId = Object.fromEntries(LAWS.map(l => [l.id, l]));
+
+  // ---------- state ----------
+  const state = { q: "", year: "all", kinds: new Set(), floors: new Set(), parties: new Set(), origin: "all", area: null, subject: null, sort: "new" };
+  let current = [];
+  let openId = null;
+  let areaExpanded = false;
+
+  function matches(l, skip) {
+    if (skip !== "year" && state.year !== "all" && l.year !== state.year) return false;
+    if (skip !== "kind" && state.kinds.size && !state.kinds.has(l.kind)) return false;
+    if (skip !== "floor" && state.floors.size && !state.floors.has(l.floorClass)) return false;
+    if (skip !== "party" && state.parties.size && !state.parties.has(l.sponsor.party)) return false;
+    if (skip !== "origin" && state.origin !== "all" && l.origin !== state.origin) return false;
+    if (skip !== "area" && state.area && l.area !== state.area) return false;
+    if (state.subject && !(l.subjects || []).includes(state.subject)) return false;
+    if (state.q) {
+      for (const t of terms()) if (!l.hay.includes(t)) return false;
+    }
+    return true;
+  }
+  const terms = () => state.q.toLowerCase().split(/\s+/).filter(Boolean);
+  const SORTS = {
+    new: (a, b) => b.signed.localeCompare(a.signed) || b.n - a.n,
+    old: (a, b) => a.signed.localeCompare(b.signed) || a.n - b.n,
+    long: (a, b) => b.words - a.words,
+    short: (a, b) => a.words - b.words,
+    fast: (a, b) => a.days - b.days || a.n - b.n,
+    slow: (a, b) => b.days - a.days || a.n - b.n,
+    cos: (a, b) => b.cosTotal - a.cosTotal || b.n - a.n,
+  };
+
+  // ---------- header ----------
+  function renderHeader() {
+    const y25 = LAWS.filter(l => l.year === "2025").length, y26 = LAWS.filter(l => l.year === "2026").length;
+    const left = dayNum(CONGRESS_END) - dayNum(TODAY);
+    $("#tally").innerHTML = `
+      <div><span class="big">${LAWS.length}</span><span class="lab">public laws</span></div>
+      <div><span class="big">${y26}</span><span class="lab">signed in 2026</span></div>
+      <div><span class="big">${y25}</span><span class="lab">signed in 2025</span></div>`;
+    const newest = [...LAWS].sort(SORTS.new)[0];
+    $("#asof").innerHTML = `Newest: <b>Pub. L. ${plDash(newest.id)}</b>, signed ${fmt(newest.signed)}<br>Data current as of ${fmt(TODAY)} · ${left} days left in the 119th Congress`;
+    const unprinted = LAWS.filter(l => !l.stat).length;
+    $("#unprinted").textContent = unprinted;
+    $("#privates").innerHTML = `Congress also enacted ${PRIV.length} private laws, which apply to named individuals rather than the public: ` +
+      PRIV.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">Private Law ${plDash(p.id)}</a> (${esc(p.head.replace(/^To authorize the President to award the Medal of Honor to /, "Medal of Honor for ").replace(/, for acts.*$/, "").replace(/\.$/, ""))}, signed ${fmt(p.signed)})`).join(" and ") + ".";
+  }
+
+  // ---------- shapes ----------
+  function shapePath(shape, cx, cy, s) {
+    const h = s / 2;
+    switch (shape) {
+      case "square": return `M${cx - h + .4},${cy - h + .4}h${s - .8}v${s - .8}h${-(s - .8)}z`;
+      case "diamond": { const r = h * 1.18; return `M${cx},${cy - r}L${cx + r},${cy}L${cx},${cy + r}L${cx - r},${cy}z`; }
+      case "up": { const r = h * 1.12; return `M${cx},${cy - r}L${cx + r},${cy + r * .82}L${cx - r},${cy + r * .82}z`; }
+      case "down": { const r = h * 1.12; return `M${cx - r},${cy - r * .82}L${cx + r},${cy - r * .82}L${cx},${cy + r}z`; }
+      default: { const r = h * .98; return `M${cx - r},${cy}a${r},${r} 0 1,0 ${2 * r},0a${r},${r} 0 1,0 ${-2 * r},0`; }
+    }
+  }
+  function glyph(kind, size = 12) {
+    const k = KIND[kind];
+    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><path d="${shapePath(k.shape, size / 2, size / 2, size * .8)}" fill="var(--k-${kind})"/></svg>`;
+  }
+
+  function renderLegend() {
+    const counts = LAWS.reduce((m, l) => (m[l.kind] = (m[l.kind] || 0) + 1, m), {});
+    $("#legend").innerHTML = KINDS.map(k => `<span>${glyph(k.key)}${esc(k.label)} <span class="mono" style="color:var(--ink-3)">${counts[k.key] || 0}</span></span>`).join("");
+  }
+
+  // ---------- timeline ----------
+  const WEEK0 = "2024-12-30";
+  const NWEEKS = Math.ceil((dayNum(CONGRESS_END) - dayNum(WEEK0) + 1) / 7);
+  let chartGeom = null;
+  function renderChart() {
+    const host = $("#chart");
+    const W = Math.max(860, $("#chartScroll").clientWidth - 16);
+    const padL = 6, padR = 6, axisH = 46, top = 28;
+    const cw = (W - padL - padR) / NWEEKS;
+    const s = Math.max(6, Math.min(9.5, cw - 2.2));
+    const step = s + 2.2;
+    const weeks = {};
+    for (const l of LAWS) (weeks[l.week] ||= []).push(l);
+    const order = Object.fromEntries(KINDS.map((k, i) => [k.key, i]));
+    let maxStack = 0;
+    for (const w in weeks) { weeks[w].sort((a, b) => order[a.kind] - order[b.kind] || a.signed.localeCompare(b.signed) || a.n - b.n); maxStack = Math.max(maxStack, weeks[w].length); }
+    const plotH = maxStack * step + 6;
+    const H = top + plotH + axisH;
+    const base = top + plotH;
+    const xDay = iso => padL + ((dayNum(iso) - dayNum(WEEK0)) / 7) * cw;
+    const parts = [];
+    parts.push(`<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="var(--band)"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--ink-3)" stroke-opacity=".35" stroke-width="1.4"/></pattern></defs>`);
+    // shutdown bands, future band
+    const bands = [
+      { from: "2025-10-01", to: "2025-11-12", label: "Government shutdown", tip: "Government shutdown, Oct. 1 to Nov. 12, 2025. Ended by Pub. L. 119–37." },
+      { from: "2026-02-14", to: "2026-04-30", label: "Partial DHS shutdown", tip: "Partial Department of Homeland Security shutdown from Feb. 14, 2026. DHS funding was enacted April 30 in Pub. L. 119–86." },
+    ];
+    for (const b of bands) {
+      const x1 = xDay(b.from), x2 = xDay(b.to);
+      parts.push(`<g class="band" data-tip="${esc(b.tip)}"><rect x="${x1}" y="${top - 16}" width="${x2 - x1}" height="${plotH + 16}" fill="url(#hatch)"/><text class="band-label" x="${x1 + 3}" y="${top - 5}">${esc(b.label)}</text></g>`);
+    }
+    const xt = xDay(TODAY), xe = xDay(CONGRESS_END);
+    parts.push(`<rect x="${xt}" y="${top - 16}" width="${xe - xt}" height="${plotH + 16}" fill="var(--band)"/>`);
+    parts.push(`<line x1="${xt}" x2="${xt}" y1="${top - 16}" y2="${base + 6}" stroke="var(--ink)" stroke-width="1.2" stroke-dasharray="3 3"/>`);
+    parts.push(`<text class="axis-label" x="${xt + 5}" y="${top - 5}">Today</text>`);
+    // baseline + months
+    parts.push(`<line x1="${padL}" x2="${W - padR}" y1="${base + .5}" y2="${base + .5}" stroke="var(--ink)" stroke-width="1"/>`);
+    for (let y = 2025; y <= 2026; y++) {
+      for (let m = 1; m <= 12; m++) {
+        const iso = `${y}-${String(m).padStart(2, "0")}-01`;
+        const x = xDay(iso);
+        const isJan = m === 1;
+        parts.push(`<g class="tick"><line x1="${x}" x2="${x}" y1="${base}" y2="${base + (isJan ? 30 : 6)}" stroke="var(--ink-3)" stroke-opacity="${isJan ? .9 : .6}"/>` +
+          `<text x="${x + 3}" y="${base + 18}">${["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"][m - 1]}</text></g>`);
+        if (isJan) parts.push(`<text class="axis-year" x="${x + 4}" y="${base + 40}">${y}</text>`);
+      }
+    }
+    const xEnd = xDay(CONGRESS_END);
+    parts.push(`<text class="axis-label" x="${xEnd}" y="${base + 40}" text-anchor="end">Jan. 3, 2027: Congress ends</text>`);
+    // marks
+    for (const w in weeks) {
+      const cx = padL + (+w + .5) * cw;
+      weeks[w].forEach((l, i) => {
+        const cy = base - 4 - s / 2 - i * step;
+        parts.push(`<path class="mk" data-id="${l.id}" d="${shapePath(KIND[l.kind].shape, cx, cy, s)}" fill="var(--k-${l.kind})"/>`);
+      });
+    }
+    host.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Chart of ${LAWS.length} laws by week signed, January 2025 to October 2026">${parts.join("")}</svg>`;
+    chartGeom = { W };
+    updateChart();
+  }
+  function updateChart() {
+    const keep = new Set(current.map(l => l.id));
+    const all = keep.size === LAWS.length;
+    document.querySelectorAll("#chart .mk").forEach(el => {
+      el.classList.toggle("dim", !all && !keep.has(el.dataset.id));
+      el.classList.toggle("sel", el.dataset.id === openId);
+    });
+  }
+  const tip = $("#tip");
+  function showTip(html, e) {
+    tip.innerHTML = html; tip.hidden = false;
+    const r = tip.getBoundingClientRect();
+    let x = e.clientX + 14, y = e.clientY - r.height - 12;
+    if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+    if (y < 8) y = e.clientY + 18;
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  }
+  $("#chart").addEventListener("mousemove", e => {
+    const mk = e.target.closest(".mk"), band = e.target.closest(".band");
+    if (mk) {
+      const l = byId[mk.dataset.id];
+      showTip(`<span class="t-n">Pub. L. ${plDash(l.id)} · ${fmt(l.signed)}</span>${esc(l.head)}<span class="t-n" style="margin-top:4px">${esc(KIND[l.kind].label)}</span>`, e);
+    } else if (band) showTip(esc(band.dataset.tip), e);
+    else tip.hidden = true;
+  });
+  $("#chart").addEventListener("mouseleave", () => tip.hidden = true);
+  $("#chart").addEventListener("click", e => { const mk = e.target.closest(".mk"); if (mk) { tip.hidden = true; openLaw(mk.dataset.id); } });
+
+  // ---------- facets ----------
+  function countBy(skip, keyFn) {
+    const m = {};
+    for (const l of LAWS) if (matches(l, skip)) { const k = keyFn(l); m[k] = (m[k] || 0) + 1; }
+    return m;
+  }
+  function renderFacets() {
+    const yc = countBy("year", l => l.year);
+    const yAll = Object.values(yc).reduce((a, b) => a + b, 0);
+    $("#f-year").innerHTML = [["all", "All", yAll], ["2025", "2025", yc["2025"] || 0], ["2026", "2026", yc["2026"] || 0]]
+      .map(([k, lab, c]) => `<button data-year="${k}" aria-pressed="${state.year === k}">${lab}<small>${c}</small></button>`).join("");
+
+    const kc = countBy("kind", l => l.kind);
+    $("#f-kind").innerHTML = KINDS.map(k => {
+      const c = kc[k.key] || 0, on = state.kinds.has(k.key);
+      return `<button class="opt" data-kind="${k.key}" aria-pressed="${on}" ${!c && !on ? "disabled" : ""} title="${esc(KIND_HINT[k.key])}"><span>${glyph(k.key, 14)}</span><span class="o-name">${esc(k.label)}</span><span class="o-count">${c}</span></button>`;
+    }).join("");
+
+    const fc = countBy("floor", l => l.floorClass);
+    $("#f-floor").innerHTML = FLOORS.map(f => {
+      const c = fc[f.key] || 0, on = state.floors.has(f.key);
+      return `<button class="opt" data-floor="${f.key}" aria-pressed="${on}" ${!c && !on ? "disabled" : ""}><span class="check"></span><span class="o-name">${esc(f.label)}</span><span class="o-count">${c}</span></button>`;
+    }).join("");
+
+    const pc = countBy("party", l => l.sponsor.party);
+    $("#f-party").innerHTML = ["R", "D", "I"].filter(p => LAWS.some(l => l.sponsor.party === p)).map(p => {
+      const c = pc[p] || 0, on = state.parties.has(p);
+      return `<button class="opt" data-party="${p}" aria-pressed="${on}" ${!c && !on ? "disabled" : ""}><span class="dot" style="background:var(--${p === "R" ? "rep" : p === "D" ? "dem" : "ind"})"></span><span class="o-name">${PARTY[p]}</span><span class="o-count">${c}</span></button>`;
+    }).join("");
+
+    const oc = countBy("origin", l => l.origin);
+    const oAll = Object.values(oc).reduce((a, b) => a + b, 0);
+    $("#f-origin").innerHTML = [["all", "Either", oAll], ["House", "House", oc.House || 0], ["Senate", "Senate", oc.Senate || 0]]
+      .map(([k, lab, c]) => `<button data-origin="${k}" aria-pressed="${state.origin === k}">${lab}<small>${c}</small></button>`).join("");
+
+    const ac = countBy("area", l => l.area);
+    const max = Math.max(1, ...Object.values(ac));
+    const shown = areaExpanded ? AREAS : AREAS.slice(0, 8);
+    if (state.area && !shown.includes(state.area)) shown.push(state.area);
+    $("#f-area").innerHTML = shown.map(a => {
+      const c = ac[a] || 0, on = state.area === a;
+      return `<button class="opt" data-area="${esc(a)}" aria-pressed="${on}" ${!c && !on ? "disabled" : ""}><span class="check" style="border-radius:50%"></span><span class="o-name">${esc(a)}</span><span class="o-count">${c}</span><span class="o-bar" style="width:${(c / max) * 70}%"></span></button>`;
+    }).join("") + (AREAS.length > 8 ? `<button class="more" id="areaMore">${areaExpanded ? "Show fewer" : `Show all ${AREAS.length} areas`}</button>` : "");
+  }
+
+  $("#facets").addEventListener("click", e => {
+    const b = e.target.closest("button");
+    if (!b || b.disabled) return;
+    if (b.id === "areaMore") { areaExpanded = !areaExpanded; renderFacets(); return; }
+    const d = b.dataset;
+    if (d.year) state.year = d.year;
+    else if (d.kind) toggle(state.kinds, d.kind);
+    else if (d.floor) toggle(state.floors, d.floor);
+    else if (d.party) toggle(state.parties, d.party);
+    else if (d.origin) state.origin = d.origin;
+    else if (d.area !== undefined) state.area = state.area === d.area ? null : d.area;
+    else return;
+    update();
+  });
+  const toggle = (set, v) => set.has(v) ? set.delete(v) : set.add(v);
+
+  // ---------- list ----------
+  function hl(text) {
+    let out = esc(text);
+    const ts = terms().filter(t => t.length > 1).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    if (!ts.length) return out;
+    const re = new RegExp(`(${ts.map(t => esc(t)).join("|")})`, "gi");
+    return out.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, txt) => tag ? tag : txt.replace(re, "<mark>$1</mark>"));
+  }
+  function floorShort(l) {
+    const out = [];
+    for (const ch of ["House", "Senate"]) {
+      const fs = l.floor.filter(f => f.chamber === ch);
+      if (!fs.length) continue;
+      const f = fs[fs.length - 1];
+      const v = f.method === "Roll call" ? `${f.yea}–${f.nay}` : f.method === "Voice vote" ? "voice" : f.method === "Unanimous consent" ? "UC" : "by rule";
+      out.push(`${ch[0]} ${v}`);
+    }
+    return out.join(" · ");
+  }
+  const maxLog = Math.log10(Math.max(...LAWS.map(l => l.words)));
+  function renderList() {
+    const list = $("#list");
+    if (!current.length) {
+      list.innerHTML = `<li class="empty"><b>No laws match these filters</b>Remove a filter or try a different search.</li>`;
+      return;
+    }
+    list.innerHTML = current.map(l => {
+      const lw = Math.max(4, (Math.log10(Math.max(10, l.words)) / maxLog) * 54);
+      return `<li class="row${l.id === openId ? " active" : ""}" data-id="${l.id}">
+        <div class="pl">${l.n}<small>${esc(l.bill)}</small></div>
+        <div class="body">
+          <h4><button data-open="${l.id}">${hl(l.head)}</button></h4>
+          <p class="gist">${hl(l.gist)}</p>
+          <div class="meta">
+            <span class="kind">${glyph(l.kind, 11)}${esc(KIND[l.kind].label)}</span>
+            <span>${esc(l.area)}</span>
+            <span>${hl(sponsorTitle(l.sponsor))} <span class="p-${l.sponsor.party}">${sponsorTag(l.sponsor)}</span></span>
+            <span title="${num(l.words)} words"><i class="lenbar" style="width:${lw}px"></i>${compactWords(l.words)} words</span>
+          </div>
+        </div>
+        <div class="when"><span>${fmt(l.signed)}</span><span class="floor">${plural(l.days, "day")}</span><span class="floor">${floorShort(l)}</span></div>
+      </li>`;
+    }).join("");
+  }
+  $("#list").addEventListener("click", e => {
+    const row = e.target.closest(".row");
+    if (row && !e.target.closest("a")) openLaw(row.dataset.id);
+  });
+
+  function renderHead() {
+    const n = current.length;
+    $("#count").innerHTML = n === LAWS.length ? `All ${n} laws` : `${plural(n, "law")}<small>of ${LAWS.length}</small>`;
+    if (!n) { $("#digest").innerHTML = ""; }
+    else {
+      const med = median(current.map(l => l.days));
+      const words = current.reduce((a, l) => a + l.words, 0);
+      const none = current.filter(l => l.floorClass === "none").length;
+      const rep = current.filter(l => l.sponsor.party === "R").length;
+      const longest = [...current].sort(SORTS.long)[0];
+      const share = words ? Math.round((longest.words / words) * 100) : 0;
+      $("#digest").innerHTML = [
+        `Median <b>${num(Math.round(med))} days</b> from introduction to signature`,
+        `<b>${none}</b> passed with no recorded vote`,
+        `<b>${rep}</b> of ${n} had a Republican sponsor`,
+        n > 1 ? `<b>${compactWords(words)}</b> words, ${share}% of them in ${esc(longest.short?.[0] || longest.head)}` : `<b>${num(words)}</b> words`,
+      ].map(s => `<span>${s}</span>`).join("");
+    }
+    const chips = [];
+    if (state.q) chips.push(["q", `Search: “${state.q}”`]);
+    if (state.year !== "all") chips.push(["year", `Signed in ${state.year}`]);
+    for (const k of state.kinds) chips.push(["kind:" + k, KIND[k].label]);
+    for (const f of state.floors) chips.push(["floor:" + f, FLOORS.find(x => x.key === f).label]);
+    for (const p of state.parties) chips.push(["party:" + p, `${PARTY[p]} sponsor`]);
+    if (state.origin !== "all") chips.push(["origin", `Started in the ${state.origin}`]);
+    if (state.area) chips.push(["area", state.area]);
+    if (state.subject) chips.push(["subject", `Subject: ${state.subject}`]);
+    $("#chips").innerHTML = chips.map(([k, lab]) => `<button class="chip" data-chip="${esc(k)}" aria-label="Remove filter: ${esc(lab)}">${esc(lab)}<span aria-hidden="true">×</span></button>`).join("") +
+      (chips.length > 1 ? `<button class="clear" data-chip="all">Clear all</button>` : "");
+    $("#chips").hidden = !chips.length;
+  }
+  $("#chips").addEventListener("click", e => {
+    const b = e.target.closest("[data-chip]"); if (!b) return;
+    const [k, v] = b.dataset.chip.split(":");
+    if (k === "all") { Object.assign(state, { q: "", year: "all", origin: "all", area: null, subject: null }); state.kinds.clear(); state.floors.clear(); state.parties.clear(); }
+    else if (k === "q") state.q = "";
+    else if (k === "year") state.year = "all";
+    else if (k === "kind") state.kinds.delete(v);
+    else if (k === "floor") state.floors.delete(v);
+    else if (k === "party") state.parties.delete(v);
+    else if (k === "origin") state.origin = "all";
+    else if (k === "area") state.area = null;
+    else if (k === "subject") state.subject = null;
+    syncSearch();
+    update();
+  });
+
+  function update() {
+    current = LAWS.filter(l => matches(l)).sort(SORTS[state.sort]);
+    renderFacets(); renderHead(); renderList(); updateChart();
+    if (openId) renderPos();
+  }
+
+  // ---------- search & sort ----------
+  const qBoxes = [$("#q"), $("#qm")];
+  let qTimer;
+  qBoxes.forEach(box => box.addEventListener("input", () => {
+    clearTimeout(qTimer);
+    qTimer = setTimeout(() => { state.q = box.value.trim(); qBoxes.forEach(b => { if (b !== box) b.value = box.value; }); update(); }, 110);
+  }));
+  const syncSearch = () => qBoxes.forEach(b => b.value = state.q);
+  $("#sort").addEventListener("change", e => { state.sort = e.target.value; update(); });
+  $("#filterToggle").addEventListener("click", e => {
+    const open = $("#facets").classList.toggle("open");
+    e.currentTarget.setAttribute("aria-expanded", open);
+    e.currentTarget.textContent = open ? "Hide filters" : "Filters";
+  });
+
+  // ---------- detail ----------
+  const pane = $("#pane"), scrim = $("#scrim");
+  let lastFocus = null;
+  function openLaw(id, { push = true } = {}) {
+    const l = byId[id]; if (!l) return;
+    if (!openId) lastFocus = document.activeElement;
+    openId = id;
+    renderDetail(l);
+    scrim.hidden = false;
+    void scrim.offsetWidth; // commit the hidden state so the slide-in transition runs
+    scrim.classList.add("on"); pane.classList.add("on");
+    pane.setAttribute("aria-hidden", "false");
+    document.body.classList.add("locked");
+    $("#paneBody").scrollTop = 0;
+    document.querySelectorAll(".row.active").forEach(r => r.classList.remove("active"));
+    document.querySelector(`.row[data-id="${id}"]`)?.classList.add("active");
+    updateChart();
+    if (push) { try { history.replaceState(null, "", "#law-" + id); } catch (_) {} }
+    setTimeout(() => $("#close").focus({ preventScroll: true }), 30);
+  }
+  function closeLaw() {
+    if (!openId) return;
+    const id = openId;
+    openId = null;
+    pane.classList.remove("on"); scrim.classList.remove("on");
+    pane.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("locked");
+    setTimeout(() => { if (!openId) scrim.hidden = true; }, 220);
+    updateChart();
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (_) {}
+    const row = document.querySelector(`.row[data-id="${id}"] h4 button`);
+    (row || lastFocus)?.focus?.({ preventScroll: false });
+  }
+  function renderPos() {
+    const i = current.findIndex(l => l.id === openId);
+    $("#pos").textContent = i >= 0 ? `${i + 1} of ${current.length} in this list` : "Not in the filtered list";
+    $("#prev").disabled = i <= 0;
+    $("#next").disabled = i < 0 || i >= current.length - 1;
+  }
+  function step(d) {
+    const i = current.findIndex(l => l.id === openId);
+    const nx = current[i + d];
+    if (nx) { openLaw(nx.id); document.querySelector(`.row[data-id="${nx.id}"]`)?.scrollIntoView({ block: "nearest" }); }
+  }
+  $("#prev").addEventListener("click", () => step(-1));
+  $("#next").addEventListener("click", () => step(1));
+  $("#close").addEventListener("click", closeLaw);
+  scrim.addEventListener("click", closeLaw);
+
+  function voteBlock(f) {
+    const when = `${f.chamber} · ${fmt(f.date)}${f.stage !== "Passage" ? " · " + f.stage.toLowerCase() : ""}`;
+    let body = "";
+    if (f.method === "Roll call" && f.byParty) {
+      const total = f.chamber === "House" ? 435 : 100;
+      const seg = (kind) => ["R", "D", "I"].map(p => {
+        const v = f.byParty[p]?.[kind] || 0;
+        if (!v) return "";
+        return `<span class="${p}" style="width:${(v / total) * 100}%" title="${PARTY[p]}s: ${v}">${v >= (total === 100 ? 6 : 22) ? p + " " + v : ""}</span>`;
+      }).join("");
+      const yeaT = ["R", "D", "I"].reduce((a, p) => a + (f.byParty[p]?.yea || 0), 0);
+      const nayT = ["R", "D", "I"].reduce((a, p) => a + (f.byParty[p]?.nay || 0), 0);
+      body = `<div class="split">
+        <span class="lab">Yea</span><div class="bar">${seg("yea")}<em>${yeaT}${f.tieBreaker ? " + VP" : ""}</em></div>
+        <span class="lab">Nay</span><div class="bar">${seg("nay")}<em>${nayT}</em></div>
+      </div>`;
+      if (f.tieBreaker) body += `<p class="vote-txt">The Vice President broke a 50–50 tie.</p>`;
+    } else {
+      const expl = f.method === "Voice vote" ? "Members called out yes or no together; no names were recorded." :
+        f.method === "Unanimous consent" ? "No senator or member objected, so it passed without a vote." :
+        "Agreed to under a special rule adopted by the House, with no separate vote on the bill.";
+      body = `<span class="pill">${esc(f.method === "Other" ? "Deemed agreed by rule" : f.method)}</span><p class="vote-txt">${expl}</p>`;
+    }
+    const res = f.method === "Roll call" ? `<span class="vote-res">${f.yea}–${f.nay}</span>` : "";
+    const link = f.url ? ` · <a href="${esc(f.url.replace("/evs/", "/evs/"))}" target="_blank" rel="noopener">Roll call ${f.roll}</a>` : "";
+    return `<div class="vote"><div class="vote-h"><b>${esc(when)}</b>${res}</div>${body}<p class="vote-txt" style="color:var(--ink-3)">${esc(f.text.replace(/\s*\((text|consideration)[^)]*\)\.?/g, "").trim())}${link}</p></div>`;
+  }
+
+  function summaryBlocks(l, all) {
+    const b = l.summary.b.filter((x, i) => x !== l.gist && !(i === 0 && (x === l.title || x === l.head || (l.short || []).includes(x))));
+    const show = all ? b : b.slice(0, 6);
+    const html = show.map(p => {
+      if (p.startsWith("• ")) return `<p class="li">${esc(p.slice(2))}</p>`;
+      if (/^(TITLE|DIVISION|Subtitle|PART)\b/.test(p) && p.length < 160) return `<p class="hd">${esc(p)}</p>`;
+      return `<p>${esc(p)}</p>`;
+    }).join("");
+    return { html, more: b.length - show.length, total: b.length };
+  }
+
+  function citation(l) {
+    const name = l.short?.[0] || l.popular?.[0] || null;
+    const yr = l.signed.slice(0, 4);
+    return `${name ? name + ", " : ""}Pub. L. No. ${l.id}, ${l.stat ? l.stat.replace("Stat.", "Stat.") : "___ Stat. ___"} (${yr}).`;
+  }
+
+  function renderDetail(l) {
+    const isJoint = /JRES/.test(l.bill.replace(/\W/g, "").toUpperCase());
+    const daysIntro = l.days;
+    const t0 = dayNum(l.intro), span = Math.max(1, dayNum(l.signed) - t0);
+    const strip = l.steps.map((s, i) => `<i class="${i === l.steps.length - 1 ? "end" : ""}" style="left:${((dayNum(s.date) - t0) / span) * 100}%" title="${esc(s.label)}: ${fmt(s.date)}"></i>`).join("");
+    const steps = l.steps.map(s => `<li><span class="sd">${fmt(s.date)}</span><span>${esc(s.label)}</span><span class="sx">day ${dayNum(s.date) - t0}</span></li>`).join("");
+    const sm = l.summary ? summaryBlocks(l, false) : null;
+    const cosTotal = l.cosTotal;
+    const cosLine = cosTotal ? ["R", "D", "I"].filter(p => l.cos[p]).map(p => `<span class="p-${p}" style="color:var(--${p === "R" ? "rep" : p === "D" ? "dem" : "ind"})">${l.cos[p]} ${p}</span>`).join(", ") : "None";
+    const aka = [...(l.popular || []), ...(l.short || [])].filter(t => t !== l.head);
+    const links = [
+      [l.url, "Congress.gov", "Full history, text and amendments"],
+      [l.pdf, l.textSource === "Public Law" ? "Slip law PDF" : "Enrolled bill PDF", l.textSource === "Public Law" ? "GovInfo" : "GovInfo · slip law not yet printed"],
+      ...(l.cbo || []).slice(0, 3).map(c => [c.url, "CBO cost estimate", c.title ? c.title.slice(0, 60) + (c.title.length > 60 ? "…" : "") : "Congressional Budget Office"]),
+    ];
+    $("#paneBody").innerHTML = `
+      <div class="slip"><span>PUBLIC LAW ${plDash(l.id)}—${gpo(l.signed)}</span><span>${l.stat ? l.stat.toUpperCase().replace("STAT.", "STAT.") : esc(l.bill)}</span></div>
+      <h2 class="d-title" id="d-title">${esc(l.head)}</h2>
+      <p class="d-official"><b>${isJoint ? "Joint Resolution" : "An Act"}</b>  ${esc((l.official || l.title).replace(/^(An act|A bill|A joint resolution)\s+/i, "").replace(/^./, c => c.toUpperCase()))}</p>
+      ${aka.length ? `<p class="d-aka">Also titled: ${aka.map(esc).join("; ")}</p>` : ""}
+      ${l.isLabel ? `<p class="d-label-note">The headline above is a short label written for this explorer. The official title follows it.</p>` : ""}
+      ${!l.isLabel && !(l.short || []).length && (l.popular || []).includes(l.head) ? `<p class="d-label-note">This is the law's popular name. The enacted text carries no short title.</p>` : ""}
+      <p class="d-gist">${esc(l.gist)}</p>
+      <p class="enact">${isJoint ? "Resolved" : "Be it enacted"} by the Senate and House of Representatives of the United States of America in Congress assembled,</p>
+      <dl class="facts">
+        <div><dt>Signed</dt><dd>${fmt(l.signed)}</dd></div>
+        <div><dt>Introduced</dt><dd>${fmt(l.intro)}<small>in the ${esc(l.origin)} as ${esc(l.bill)}</small></dd></div>
+        <div><dt>Time to enactment</dt><dd>${plural(daysIntro, "day")}</dd></div>
+        <div><dt>Sponsor</dt><dd>${esc(sponsorTitle(l.sponsor))}<small><span style="color:var(--${l.sponsor.party === "R" ? "rep" : l.sponsor.party === "D" ? "dem" : "ind"});font-weight:600">${sponsorTag(l.sponsor)}</span></small></dd></div>
+        <div><dt>Cosponsors</dt><dd>${cosTotal || "None"}${cosTotal ? `<small>${cosLine}</small>` : ""}</dd></div>
+        <div><dt>Length</dt><dd>${num(l.words)} words<small>${l.statPages ? plural(l.statPages, "page") + " in the Statutes at Large" : "Statutes at Large pages not yet assigned"}</small></dd></div>
+        <div><dt>Type</dt><dd><span style="display:inline-flex;gap:6px;align-items:center">${glyph(l.kind, 12)}${esc(KIND[l.kind].label)}</span></dd></div>
+        <div style="grid-column: span 2"><dt>Policy area</dt><dd><button class="tag" data-area="${esc(l.area)}">${esc(l.area)}</button></dd></div>
+      </dl>
+
+      <div class="sec">
+        <h3>Path to law <small>${plural(daysIntro, "day")}</small></h3>
+        <div class="journey-strip"><div class="track"></div><div class="fill" style="width:100%"></div>${strip}</div>
+        <ol class="steps">${steps}</ol>
+      </div>
+
+      <div class="sec">
+        <h3>Floor votes <small>${l.rolls.length ? plural(l.rolls.length, "roll call") : "No recorded vote"}</small></h3>
+        ${l.floor.map(voteBlock).join("")}
+      </div>
+
+      <div class="sec">
+        <h3>What it does <small>${l.summary ? `CRS summary · ${esc(l.summary.v)}` : ""}</small></h3>
+        <div class="summary" id="sumBody">${sm ? sm.html : `<p>The Congressional Research Service has not published a summary of this law yet. Read the text on <a href="${esc(l.url)}/text" target="_blank" rel="noopener">Congress.gov</a>.</p>`}</div>
+        ${sm && sm.more > 0 ? `<button class="ib" id="sumMore">Show the full summary (${num(sm.total)} paragraphs)</button>` : ""}
+      </div>
+
+      ${l.committees?.length ? `<div class="sec"><h3>Committees</h3><div class="tags">${l.committees.map(c => `<span class="tag" style="cursor:default">${esc(c.chamber)} ${esc(c.name)}</span>`).join("")}</div></div>` : ""}
+
+      ${l.subjects?.length ? `<div class="sec"><h3>Subjects <small>Click one to find related laws</small></h3><div class="tags">${l.subjects.map(s => `<button class="tag" data-subject="${esc(s)}">${esc(s)}</button>`).join("")}</div></div>` : ""}
+
+      <div class="sec">
+        <h3>Read it</h3>
+        <div class="links">${links.map(([u, a, b]) => `<a href="${esc(u)}" target="_blank" rel="noopener"><span>${esc(a)} ↗</span><small>${esc(b)}</small></a>`).join("")}</div>
+        <div class="cite"><code id="citeText">${esc(citation(l))}</code><button class="ib" id="copyCite">Copy citation</button></div>
+      </div>`;
+    renderPos();
+    const more = $("#sumMore");
+    if (more) more.addEventListener("click", () => { $("#sumBody").innerHTML = summaryBlocks(l, true).html; more.remove(); });
+    $("#copyCite").addEventListener("click", () => {
+      const text = $("#citeText").textContent;
+      const done = () => toast("Citation copied");
+      try {
+        navigator.clipboard.writeText(text).then(done, () => selectCite());
+      } catch (_) { selectCite(); }
+    });
+  }
+  function selectCite() {
+    const r = document.createRange(); r.selectNodeContents($("#citeText"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    toast("Press ⌘C or Ctrl+C to copy");
+  }
+  let toastTimer;
+  function toast(msg) {
+    let t = document.querySelector(".toast");
+    if (!t) { t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 1800);
+  }
+  $("#paneBody").addEventListener("click", e => {
+    const s = e.target.closest("[data-subject]"), a = e.target.closest("[data-area]");
+    if (s) { state.subject = s.dataset.subject; closeLaw(); update(); $("#count").scrollIntoView({ behavior: "smooth", block: "start" }); }
+    else if (a) { state.area = a.dataset.area; closeLaw(); update(); $("#count").scrollIntoView({ behavior: "smooth", block: "start" }); }
+  });
+
+  // ---------- keyboard ----------
+  document.addEventListener("keydown", e => {
+    if (openId) {
+      if (e.key === "Escape") { e.preventDefault(); closeLaw(); }
+      else if (e.key === "ArrowLeft" && !e.target.matches("input,select")) step(-1);
+      else if (e.key === "ArrowRight" && !e.target.matches("input,select")) step(1);
+      else if (e.key === "Tab") {
+        const f = [...pane.querySelectorAll("button:not([disabled]), a[href]")];
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      }
+      return;
+    }
+    if (e.key === "/" && !e.target.matches("input,select,textarea")) {
+      e.preventDefault();
+      const box = getComputedStyle($("#qm").closest(".mobile-filters")).display !== "none" ? $("#qm") : $("#q");
+      box.focus();
+    }
+  });
+
+  // ---------- boot ----------
+  renderHeader();
+  renderLegend();
+  update();
+  renderChart();
+  const sc = $("#chartScroll");
+  sc.scrollLeft = sc.scrollWidth;
+  let rz;
+  addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(renderChart, 120); });
+  const fromHash = () => { const m = /^#law-(119-\d+)$/.exec(location.hash); if (m && byId[m[1]]) openLaw(m[1], { push: false }); };
+  fromHash();
+  addEventListener("hashchange", fromHash);
+})();
+</script>
