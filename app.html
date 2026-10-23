@@ -496,7 +496,7 @@ mark { background: var(--hl); color: var(--hl-ink); border-radius: 2px; padding:
       <div><span class="big">${y26}</span><span class="lab">signed in 2026</span></div>
       <div><span class="big">${y25}</span><span class="lab">signed in 2025</span></div>`;
     const newest = [...LAWS].sort(SORTS.new)[0];
-    $("#asof").innerHTML = `Newest: <b>Pub. L. ${plDash(newest.id)}</b>, signed ${fmt(newest.signed)}<br>Data current as of ${fmt(TODAY)} · ${left} days left in the 119th Congress`;
+    $("#asof").innerHTML = `Newest: <b>Pub. L. ${plDash(newest.id)}</b>, signed ${fmt(newest.signed)}<br>Data current as of ${fmt(TODAY)} · ${left > 0 ? `${left} days left in the 119th Congress` : "The 119th Congress has ended"}<br>On a phone? <a href="https://danielgolliher.github.io/pocket-lawbook/" target="_blank" rel="noopener">Try Pocket Lawbook</a>`;
     const unprinted = LAWS.filter(l => !l.stat).length;
     $("#unprinted").textContent = unprinted;
     $("#privates").innerHTML = `Congress also enacted ${PRIV.length} private laws, which apply to named individuals rather than the public: ` +

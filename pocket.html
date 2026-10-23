@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pocket Lawbook 🇺🇸</title>
+<!--__HEAD__-->
+<meta name="theme-color" content="#0b1233">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap">
+<style>
+/* Pocket Lawbook: the phone-sized edition of the 119th Congress Lawbook.
+   One look on purpose: a night-navy page with a faint star field, white law cards with a red
+   "SIGNED" stamp, and a paper side panel that holds everything the full Lawbook shows. */
+:root {
+  color-scheme: dark;
+  --page: #0a0e27;
+  --hi: #f1f3fc;
+  --hi-2: rgba(241, 243, 252, .74);
+  --hi-3: rgba(241, 243, 252, .52);
+  --line: rgba(255, 255, 255, .15);
+  --glass: rgba(255, 255, 255, .07);
+  --lav: #a9b5ff;
+  --paper: #fcfcfe;
+  --card: #ffffff;
+  --ink: #1e2130;
+  --ink-2: #4b4f62;
+  --ink-3: #7d8195;
+  --rule: rgba(30, 33, 48, .12);
+  --tint: #eef0fb;
+  --blue: #2546d6;
+  --red: #c8202f;
+  --rep: #d23c3c;
+  --dem: #2f6fd0;
+  --ind: #8b93a1;
+  /* law types: light steps on white cards, dark steps on the navy chart (validated pairs) */
+  --k-policy: #8b93a1; --k-rule: #c2410c; --k-money: #14a06e; --k-honor: #6250d6; --k-land: #e0a000;
+  --kd-policy: #8d95a3; --kd-rule: #e4552a; --kd-money: #1ea374; --kd-honor: #9085e9; --kd-land: #d1a020;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html.locked, html.locked body { overflow: hidden; }
+body {
+  margin: 0; min-height: 100dvh; color: var(--hi);
+  background: radial-gradient(130% 60% at 50% -8%, #24337f 0%, #131a4a 42%, #0a0e27 100%) fixed, var(--page);
+  font: 1.06rem/1.55 var(--serif); font-optical-sizing: auto; -webkit-font-smoothing: antialiased; overflow-x: clip;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+::selection { background: rgba(169, 181, 255, .35); }
+a { color: var(--lav); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, h4 { margin: 0; font-weight: 400; line-height: 1.05; letter-spacing: -.02em; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+button, input, select { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+.label { font: 600 .62rem/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+
+/* Top bar */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 16px 6px; }
+.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--hi); text-decoration: none; font: 500 1.06rem var(--serif); }
+.brand__mark { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; font-size: 21px; line-height: 1; background: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 6px 16px rgba(0,0,0,.3); }
+.pill-link { white-space: nowrap; color: var(--hi-2); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; background: var(--glass); }
+.pill-link:hover { color: #fff; border-color: rgba(255,255,255,.35); }
+
+/* Hero */
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 8px 34px; }
+.hero::before { content: ""; position: absolute; inset: -40px -18px 30% -18px; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,.55) .8px, transparent 1.3px), radial-gradient(rgba(255,255,255,.35) .7px, transparent 1.2px);
+  background-size: 54px 54px, 38px 38px; background-position: 0 0, 19px 23px;
+  -webkit-mask-image: linear-gradient(#000 0%, transparent 100%); mask-image: linear-gradient(#000 0%, transparent 100%); }
+.fan { position: relative; height: 360px; margin-inline: -18px; }
+.fan .card { position: absolute; left: 50%; top: 50%; width: 236px; cursor: pointer; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.fan .card .gist, .fan .card .foot, .fan .card .sponsor, .fan .card .kind-pill, .fan .card .nrow .label { display: none; }
+.fan .card h3 { font-size: 1.12rem; -webkit-line-clamp: 3; }
+.fan .card:nth-child(1) { transform: translate(-50%, -50%) translate(-34%, 5%) rotate(-9deg) scale(.88); }
+.fan .card:nth-child(2) { transform: translate(-50%, -50%) translate(34%, 4%) rotate(8deg) scale(.9); }
+.fan .card:nth-child(3) { transform: translate(-50%, -52%) rotate(-1.5deg); z-index: 2; }
+.hero h1 { font: 300 clamp(2.7rem, 10.5vw, 4.6rem)/1.0 var(--serif); letter-spacing: -.025em; }
+.hero h1 em { font-style: italic; color: var(--lav); }
+.dek { font-style: italic; font-weight: 300; font-size: 1.12rem; color: var(--hi-2); max-width: 34ch; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn { appearance: none; border: 0; cursor: pointer; height: 56px; padding: 0 30px; border-radius: 999px; background: #fff; color: #0d1236; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 .74rem var(--sans); letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 10px 30px -12px rgba(0,0,0,.6); }
+.btn:hover { background: #e8ecff; }
+.stats { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 14px 24px; }
+.stats li { display: inline-flex; align-items: center; gap: 10px; color: var(--hi-2); }
+.stats .i { width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--blue); display: grid; place-items: center; font: 400 1.06rem var(--serif); font-style: italic; box-shadow: 0 8px 20px -10px rgba(0,0,0,.7); }
+.asof { font: 400 .74rem/1.6 var(--sans); color: var(--hi-3); }
+.asof b { color: var(--hi); font-weight: 600; }
+
+/* Chart */
+.chart-sec { border-top: 1px solid var(--line); padding-block: 26px 10px; }
+.sec-h { font: 300 1.7rem/1.1 var(--serif); }
+.sec-sub { font: 400 .8rem/1.5 var(--sans); color: var(--hi-3); margin-top: 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; color: var(--hi-2); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.chart-scroll { overflow-x: auto; overflow-y: hidden; margin: 10px -18px 0; padding: 0 18px 6px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.chart-scroll::-webkit-scrollbar { display: none; }
+#chart { min-width: 840px; }
+#chart svg { display: block; }
+.mk { cursor: pointer; transition: opacity .18s; }
+.mk.dim { opacity: .14; }
+.ax { fill: var(--hi-3); font: 500 10.5px var(--sans); letter-spacing: .08em; }
+.ax-y { fill: var(--hi); font: italic 400 15px var(--serif); }
+.band-l { fill: var(--hi-2); font: italic 400 12px var(--serif); }
+.swipe-hint { color: var(--hi-3); margin-top: 4px; }
+.tip { position: fixed; z-index: 40; pointer-events: none; max-width: 280px; background: #fff; color: var(--ink); border-radius: 12px; padding: 9px 12px; font: 400 .9rem/1.35 var(--serif); box-shadow: 0 12px 30px rgba(0,0,0,.4); }
+.tip .label { color: var(--ink-3); display: block; margin-bottom: 3px; }
+
+/* Toolbar */
+.toolbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; padding-block: 12px; margin-top: 12px;
+  background: linear-gradient(rgba(10, 14, 39, .94), rgba(10, 14, 39, .86)); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: #0a0e27; }
+.tb-row { display: flex; gap: 10px; align-items: center; }
+.search { position: relative; flex: 1; min-width: 0; }
+.search input { width: 100%; height: 48px; border-radius: 999px; border: 1px solid var(--line); background: var(--glass); padding: 0 16px 0 42px; font: 400 16px var(--sans); color: var(--hi); outline: none; }
+.search input::placeholder { color: var(--hi-3); }
+.search input:focus { border-color: var(--lav); background: rgba(255,255,255,.1); }
+.search svg { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--hi-3); }
+.fbtn { position: relative; height: 48px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--glass); color: var(--hi); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.fbtn b { min-width: 20px; height: 20px; border-radius: 999px; background: var(--red); color: #fff; font: 700 .66rem/20px var(--sans); text-align: center; padding: 0 6px; letter-spacing: 0; }
+.quick { display: flex; gap: 8px; overflow-x: auto; margin: 10px -18px 0; padding: 0 18px 2px; scrollbar-width: none; }
+.quick::-webkit-scrollbar { display: none; }
+.chip { flex: none; display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--glass); color: var(--hi-2); cursor: pointer; white-space: nowrap; }
+.chip[aria-pressed="true"] { background: #fff; color: #0d1236; border-color: #fff; }
+.chip .c { opacity: .6; font-variant-numeric: tabular-nums; }
+.chip[disabled] { opacity: .35; cursor: default; }
+
+/* Results */
+.res-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px; padding-block: 22px 4px; }
+.count { font: 300 1.8rem/1.1 var(--serif); }
+.count em { font-style: italic; color: var(--lav); }
+.sort { display: inline-flex; align-items: center; gap: 8px; color: var(--hi-3); }
+.sort select { appearance: none; -webkit-appearance: none; height: 36px; border-radius: 999px; border: 1px solid var(--line); background: var(--glass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23f1f3fc' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 13px center; padding: 0 32px 0 14px; color: var(--hi); font: 600 .62rem var(--sans); letter-spacing: .12em; text-transform: uppercase; }
+.sort select option { color: #111; }
+.digest { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 400 .8rem/1.5 var(--sans); color: var(--hi-3); padding-bottom: 6px; }
+.digest b { color: var(--hi); font-weight: 600; }
+.active { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 8px 2px; }
+.active .chip { background: rgba(169,181,255,.14); border-color: rgba(169,181,255,.35); color: var(--hi); }
+.active .chip span { opacity: .7; font-size: 1rem; line-height: 1; }
+.clear { background: none; border: 0; color: var(--lav); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; padding: 0 6px; }
+
+/* Cards */
+.feed { list-style: none; margin: 0; padding: 16px 0 40px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.card { position: relative; background: var(--card); color: var(--ink); border-radius: 26px; overflow: hidden; box-shadow: 0 22px 44px -22px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.04); display: flex; flex-direction: column; }
+.feed .card { cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+.feed .card:hover { transform: translateY(-2px); box-shadow: 0 28px 50px -22px rgba(0,0,0,.85); }
+.feed .card.active { outline: 3px solid var(--lav); outline-offset: 2px; }
+.band { position: relative; height: 84px; flex: none; }
+.stamp { position: absolute; left: 16px; top: 18px; transform: rotate(-7deg); border: 2px solid var(--red); color: var(--red); border-radius: 7px; padding: 4px 9px 3px; background: rgba(255,255,255,.78); text-align: center; line-height: 1.05; box-shadow: inset 0 0 0 1px rgba(200,32,47,.18); }
+.stamp b { display: block; font: 800 .8rem var(--sans); letter-spacing: .2em; padding-left: .2em; text-transform: uppercase; }
+.stamp small { display: block; font: 700 .52rem var(--sans); letter-spacing: .12em; margin-top: 2px; }
+.kind-pill { position: absolute; right: 14px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.88); color: var(--ink); border-radius: 999px; padding: 6px 11px 5px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.cbody { padding: 14px 20px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.nrow { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.bignum { font: italic 300 2.7rem/1 var(--serif); color: var(--blue); font-variant-numeric: lining-nums; letter-spacing: -.02em; }
+.nrow .label { color: var(--ink-3); text-align: right; line-height: 1.5; white-space: nowrap; }
+.card h3 { font: 400 1.3rem/1.2 var(--serif); letter-spacing: -.01em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+.card h3 button { all: unset; cursor: pointer; }
+.card h3 button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+.gist { color: var(--ink-2); font-size: 1rem; line-height: 1.5; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.sponsor { font: 400 .8rem var(--sans); color: var(--ink-3); }
+.sponsor b { font-weight: 700; }
+.p-R { color: var(--rep); } .p-D { color: var(--dem); } .p-I { color: var(--ind); }
+.foot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: auto; padding-top: 6px; }
+.tag { display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink-2); background: #fff; white-space: nowrap; }
+.more { margin-left: auto; color: var(--blue); text-decoration: underline; text-underline-offset: 5px; text-decoration-color: rgba(37,70,214,.35); }
+mark { background: #ffe45c; color: inherit; border-radius: 2px; padding: 0 1px; }
+.empty { grid-column: 1 / -1; text-align: center; padding: 50px 10px; color: var(--hi-2); }
+.empty b { display: block; font: 300 1.6rem var(--serif); color: var(--hi); margin-bottom: 6px; }
+
+/* Footer */
+.site-foot { border-top: 1px solid var(--line); padding-block: 28px max(36px, env(safe-area-inset-bottom, 0px)); display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; font: 400 .8rem/1.65 var(--sans); color: var(--hi-3); }
+.site-foot h2 { font: 300 1.25rem var(--serif); color: var(--hi); margin-bottom: 6px; letter-spacing: -.01em; }
+.site-foot p + p { margin-top: 8px; }
+
+/* Sheets and panel */
+.scrim { position: fixed; inset: 0; z-index: 50; background: rgba(4, 6, 20, .55); opacity: 0; transition: opacity .22s; }
+.scrim.on { opacity: 1; }
+.sheet { position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; max-height: 88dvh; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: #10163d; color: var(--hi); border-radius: 26px 26px 0 0; box-shadow: 0 -20px 50px rgba(0,0,0,.5); transform: translateY(105%); transition: transform .28s cubic-bezier(.2,.8,.2,1); border-top: 1px solid var(--line); }
+.sheet.on { transform: none; }
+.sheet-h { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px 8px; }
+.sheet-h::before { content: ""; position: absolute; left: 50%; top: 8px; width: 40px; height: 4px; margin-left: -20px; border-radius: 2px; background: var(--line); }
+.sheet-h h2 { font: 300 1.5rem var(--serif); padding-top: 12px; }
+.sheet-b { overflow-y: auto; padding: 4px 20px 16px; display: grid; gap: 22px; overscroll-behavior: contain; }
+.facet h3 { color: var(--hi-3); margin-bottom: 10px; }
+.facet .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.facet .hint { font: 400 .76rem/1.5 var(--sans); color: var(--hi-3); margin-top: 8px; }
+.sheet-f { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 14px 20px max(16px, env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
+.round { appearance: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); color: var(--hi); cursor: pointer; display: inline-grid; place-items: center; }
+
+.panel { position: fixed; z-index: 70; top: 0; right: 0; bottom: 0; width: min(560px, 100%); background: var(--paper); color: var(--ink); display: grid; grid-template-rows: auto minmax(0, 1fr); box-shadow: -24px 0 60px rgba(0,0,0,.45); transform: translateX(104%); transition: transform .3s cubic-bezier(.2,.8,.2,1); padding-top: env(safe-area-inset-top, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.panel.on { transform: none; }
+.pbar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--rule); background: var(--paper); }
+.pbar .round { border-color: var(--rule); background: #fff; color: var(--ink); width: 40px; height: 40px; }
+.pbar .round[disabled] { opacity: .3; cursor: default; }
+.pbar .pos { flex: 1; text-align: center; color: var(--ink-3); }
+.back { height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--rule); background: #fff; color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
+.panel a { color: var(--blue); }
+.pbody { overflow-y: auto; overscroll-behavior: contain; padding: 0 0 calc(60px + env(safe-area-inset-bottom, 0px)); }
+.pbody.slide-l { animation: inL .26s ease; }
+.pbody.slide-r { animation: inR .26s ease; }
+@keyframes inL { from { opacity: 0; transform: translateX(28px); } }
+@keyframes inR { from { opacity: 0; transform: translateX(-28px); } }
+.phead { position: relative; height: 110px; }
+.phead .stamp { top: 24px; left: 22px; }
+.phead .kind-pill { bottom: 16px; right: 18px; }
+.pin { padding: 18px 24px 0; }
+.slip { display: flex; justify-content: space-between; gap: 10px; border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); padding: 7px 0 6px; font: 400 .72rem/1.3 var(--serif); letter-spacing: .08em; font-variant-numeric: lining-nums; }
+.slip span:last-child { white-space: nowrap; text-align: right; }
+.d-num { font: italic 300 3.2rem/1 var(--serif); color: var(--blue); margin-top: 18px; letter-spacing: -.02em; font-variant-numeric: lining-nums; }
+.d-title { font: 400 clamp(1.7rem, 6.6vw, 2.2rem)/1.12 var(--serif); margin-top: 8px; letter-spacing: -.015em; }
+.d-official { font: italic 400 1rem/1.5 var(--serif); color: var(--ink-2); margin-top: 10px; }
+.d-official b { font-style: normal; font-weight: 400; letter-spacing: .05em; }
+.note { font: 400 .78rem/1.5 var(--sans); color: var(--ink-3); margin-top: 8px; }
+.d-gist { font-size: 1.16rem; line-height: 1.55; margin-top: 18px; }
+.enact { font: italic 400 .92rem/1.5 var(--serif); color: var(--ink-3); margin-top: 16px; padding-left: 14px; border-left: 2px solid var(--rule); }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 18px; margin: 22px 0 0; padding: 18px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.facts div { min-width: 0; }
+.facts dt { color: var(--ink-3); }
+.facts dd { margin: 5px 0 0; font: 500 1rem/1.35 var(--serif); overflow-wrap: anywhere; }
+.facts dd small { display: block; font: 400 .76rem/1.4 var(--sans); color: var(--ink-3); margin-top: 2px; }
+.psec { margin-top: 28px; }
+.psec h3 { font: 300 1.4rem/1.2 var(--serif); display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+.psec h3 .label { color: var(--ink-3); }
+.strip { position: relative; height: 30px; margin: 4px 7px 0; }
+.strip .track { position: absolute; left: 0; right: 0; top: 12px; height: 6px; border-radius: 3px; background: var(--ink); }
+.strip i { position: absolute; top: 8px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #fff; border: 2.5px solid var(--ink); }
+.strip i.end { background: var(--red); border-color: var(--red); }
+.steps { list-style: none; margin: 12px 0 0; padding: 0; }
+.steps li { display: grid; grid-template-columns: 104px minmax(0, 1fr) auto; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--rule); align-items: baseline; font-size: .98rem; }
+.steps .sd { font: 500 .76rem var(--sans); color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.steps .sx { color: var(--ink-3); }
+.vote { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.vote-h { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 10px; align-items: baseline; }
+.vote-h b { font: 600 .9rem var(--sans); }
+.vote-res { font: italic 400 1.15rem var(--serif); color: var(--blue); }
+.vote-txt { font: 400 .8rem/1.5 var(--sans); color: var(--ink-2); margin-top: 6px; }
+.vote-txt.dim { color: var(--ink-3); }
+.vpill { display: inline-block; margin-top: 8px; padding: 4px 11px 3px; border-radius: 999px; background: var(--tint); color: var(--ink-2); }
+.split { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 6px 10px; align-items: center; margin-top: 10px; }
+.split .lab { color: var(--ink-3); }
+.split .bar { display: flex; gap: 2px; height: 20px; }
+.split .bar span { display: flex; align-items: center; padding: 0 6px; color: #fff; font: 700 .66rem var(--sans); letter-spacing: .04em; border-radius: 3px; overflow: hidden; white-space: nowrap; min-width: 2px; }
+.split .R { background: var(--rep); } .split .D { background: var(--dem); } .split .I { background: var(--ind); }
+.split em { font: 500 .76rem var(--sans); color: var(--ink-3); font-style: normal; align-self: center; padding-left: 6px; white-space: nowrap; }
+.summary p { margin: 0 0 12px; font-size: 1.02rem; line-height: 1.6; }
+.summary p.li { padding-left: 16px; position: relative; }
+.summary p.li::before { content: "★"; position: absolute; left: 0; top: .1em; font-size: .62rem; color: var(--red); }
+.summary p.hd { font: 700 .8rem/1.4 var(--sans); letter-spacing: .04em; margin-top: 18px; }
+.outline { appearance: none; height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--rule); background: #fff; color: var(--ink); cursor: pointer; }
+.ptags { display: flex; flex-wrap: wrap; gap: 7px; }
+.ptags button, .ptags span { height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--rule); background: #fff; color: var(--ink-2); font: 400 .82rem var(--sans); display: inline-flex; align-items: center; text-align: left; }
+.ptags button { cursor: pointer; }
+.ptags button:hover { border-color: var(--blue); color: var(--blue); }
+.links { display: grid; gap: 8px; }
+.links a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 16px; border-radius: 16px; border: 1px solid var(--rule); background: #fff; color: var(--ink); text-decoration: none; font: 500 .95rem var(--serif); }
+.links a small { font: 400 .74rem var(--sans); color: var(--ink-3); text-align: right; }
+.links a:hover { border-color: var(--blue); }
+.cite { margin-top: 12px; padding: 12px 14px; border-radius: 16px; background: var(--tint); display: grid; gap: 10px; }
+.cite code { font: 400 .92rem/1.45 var(--serif); overflow-wrap: anywhere; }
+.toast { position: fixed; left: 50%; bottom: calc(26px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 90; background: #fff; color: var(--ink); padding: 10px 18px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+
+@media (min-width: 760px) {
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center; padding-block: 24px 50px; }
+  .hero .copy { order: -1; }
+  .fan { height: 440px; }
+  .fan .card { width: 270px; }
+  .feed { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-foot { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .quick { margin-inline: 0; padding-inline: 0; flex-wrap: wrap; overflow: visible; }
+  .sheet { left: auto; right: 24px; bottom: 24px; width: 420px; border-radius: 26px; max-height: calc(100dvh - 48px); }
+}
+@media (min-width: 1100px) { .feed { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 380px) {
+  .fan .card { width: 210px; }
+  .fan .card:nth-child(1) { transform: translate(-50%, -50%) translate(-28%, 5%) rotate(-8deg) scale(.86); }
+  .fan .card:nth-child(2) { transform: translate(-50%, -50%) translate(28%, 4%) rotate(7deg) scale(.88); }
+  .steps li { grid-template-columns: 96px minmax(0, 1fr); }
+  .steps .sx { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fan .card, .sheet, .panel, .scrim, .mk, .feed .card { transition: none; }
+  .pbody.slide-l, .pbody.slide-r { animation: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" id="top"><span class="brand__mark" aria-hidden="true">🇺🇸</span>Pocket Lawbook</a>
+    <a class="pill-link label" href="https://danielgolliher.github.io/lawbook/" target="_blank" rel="noopener">Full Lawbook ↗</a>
+  </header>
+
+  <section class="hero">
+    <div class="fan" id="fan" aria-label="Featured laws"></div>
+    <div class="copy" style="display:grid;gap:20px">
+      <h1>Every new federal law, <em>in your pocket.</em></h1>
+      <p class="dek" id="dek"></p>
+      <div class="cta-row"><a class="btn" href="#laws">Browse the laws ↓</a></div>
+      <ul class="stats" id="stats"></ul>
+      <p class="asof" id="asof"></p>
+    </div>
+  </section>
+
+  <section class="chart-sec" aria-labelledby="chart-h">
+    <h2 class="sec-h" id="chart-h">When they were signed</h2>
+    <p class="sec-sub">Each mark is one law, stacked by the week it was signed. Tap one to read it.</p>
+    <div class="legend label" id="legend"></div>
+    <div class="chart-scroll" id="chartScroll"><div id="chart"></div></div>
+    <p class="label swipe-hint">← Drag the chart to see 2025</p>
+  </section>
+</div>
+
+<div class="toolbar" id="laws">
+  <div class="wrap">
+    <div class="tb-row">
+      <label class="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.2" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input id="q" type="search" placeholder="Search the laws" aria-label="Search laws" autocomplete="off" enterkeyhint="search">
+      </label>
+      <button class="fbtn label" id="openFilters" aria-haspopup="dialog">Filters <b id="fcount" hidden></b></button>
+    </div>
+    <div class="quick" id="quick" aria-label="Law types"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="res-head">
+    <h2 class="count" id="count" aria-live="polite"></h2>
+    <label class="sort label">Sort
+      <select id="sort" aria-label="Sort laws">
+        <option value="new">Newest</option>
+        <option value="old">Oldest</option>
+        <option value="long">Longest text</option>
+        <option value="short">Shortest text</option>
+        <option value="fast">Fastest to law</option>
+        <option value="slow">Slowest to law</option>
+        <option value="cos">Most cosponsors</option>
+      </select>
+    </label>
+  </div>
+  <div class="digest" id="digest"></div>
+  <div class="active" id="activeChips"></div>
+  <ol class="feed" id="feed"></ol>
+
+  <footer class="site-foot">
+    <div>
+      <h2>Sources</h2>
+      <p>The law list comes from the <a href="https://www.congress.gov/public-laws/119th-congress" target="_blank" rel="noopener">Congress.gov public laws list</a>. Bill histories, sponsors, committees and Congressional Research Service summaries come from <a href="https://www.govinfo.gov/bulkdata/BILLSTATUS/119" target="_blank" rel="noopener">GovInfo</a>. Party splits come from the <a href="https://clerk.house.gov/Votes" target="_blank" rel="noopener">House Clerk</a> and the <a href="https://www.senate.gov/legislative/votes_new.htm" target="_blank" rel="noopener">Senate</a>.</p>
+    </div>
+    <div>
+      <h2>Method</h2>
+      <p>Word counts measure the enrolled bill. Statutes at Large citations come from the printed slip laws; <span id="unprinted"></span> recent laws have not been printed yet. Days to law run from introduction to signature. The five law types and the short headlines for laws with only a long official title were written for the Lawbook.</p>
+      <p>Updated every week. This is the phone-sized edition of the <a href="https://danielgolliher.github.io/lawbook/" target="_blank" rel="noopener">119th Congress Lawbook</a>, also at <a href="https://data.maximumnewyork.com/lawbook" target="_blank" rel="noopener">data.maximumnewyork.com</a>.</p>
+    </div>
+    <div>
+      <h2>Not shown</h2>
+      <p id="privates"></p>
+    </div>
+  </footer>
+</main>
+
+<div class="tip" id="tip" hidden></div>
+<div class="scrim" id="scrim" hidden></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h" aria-hidden="true">
+  <div class="sheet-h"><h2 id="sheet-h">Filters</h2><button class="round" id="closeFilters" aria-label="Close filters"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
+  <div class="sheet-b" id="facets">
+    <div class="facet"><h3 class="label">Year signed</h3><div class="opts" id="f-year"></div></div>
+    <div class="facet"><h3 class="label">Type of law</h3><div class="opts" id="f-kind"></div></div>
+    <div class="facet"><h3 class="label">How it passed</h3><div class="opts" id="f-floor"></div><p class="hint">Voice votes and unanimous consent leave no individual tally. A party-line law had at least one roll call where most Republicans and most Democrats voted opposite ways.</p></div>
+    <div class="facet"><h3 class="label">Sponsor's party</h3><div class="opts" id="f-party"></div></div>
+    <div class="facet"><h3 class="label">Started in</h3><div class="opts" id="f-origin"></div></div>
+    <div class="facet"><h3 class="label">Policy area</h3><div class="opts" id="f-area"></div></div>
+  </div>
+  <div class="sheet-f"><button class="clear label" id="clearAll">Clear all</button><button class="btn" id="showResults">Show laws</button></div>
+</div>
+
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="d-title" aria-hidden="true">
+  <div class="pbar">
+    <button class="back label" id="closePanel"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M8 1.5L3.5 6 8 10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>All laws</button>
+    <span class="pos label" id="pos"></span>
+    <button class="round" id="prev" aria-label="Previous law"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M8 1.5L3.5 6 8 10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="round" id="next" aria-label="Next law"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1.5L8.5 6 4 10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+  <div class="pbody" id="pbody"></div>
+</aside>
+
+<script type="application/json" id="laws-data">/*__LAWS__*/</script>
+<script>
+(() => {
+  "use strict";
+  const ALL = JSON.parse(document.getElementById("laws-data").textContent);
+  const PRIV = ALL.filter(l => l.pvt);
+  const LAWS = ALL.filter(l => !l.pvt);
+  const TODAY = "2026-10-22";
+  const CONGRESS_END = "2027-01-03";
+
+  const KINDS = [
+    { key: "policy", label: "Policy change", shape: "circle" },
+    { key: "rule", label: "Overturns a rule", shape: "down" },
+    { key: "land", label: "Land & places", shape: "up" },
+    { key: "honor", label: "Honors & names", shape: "diamond" },
+    { key: "money", label: "Spending & budget", shape: "square" },
+  ];
+  const KIND = Object.fromEntries(KINDS.map(k => [k.key, k]));
+  const TINT = { policy: "#eef0f4", rule: "#fbe8df", land: "#fbf1d4", honor: "#ece9fb", money: "#def3ea" };
+  const FLOORS = [
+    { key: "none", label: "No recorded vote" },
+    { key: "bi", label: "Bipartisan roll call" },
+    { key: "party", label: "Party-line roll call" },
+  ];
+  const PARTY = { R: "Republican", D: "Democrat", I: "Independent" };
+
+  // ---------- helpers ----------
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const num = n => (n ?? 0).toLocaleString("en-US");
+  const AP = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+  const GPO = ["JAN.", "FEB.", "MAR.", "APR.", "MAY", "JUNE", "JULY", "AUG.", "SEPT.", "OCT.", "NOV.", "DEC."];
+  const ymd = iso => iso.split("-").map(Number);
+  const fmt = iso => { if (!iso) return ""; const [y, m, d] = ymd(iso); return `${AP[m - 1]} ${d}, ${y}`; };
+  const gpo = iso => { const [y, m, d] = ymd(iso); return `${GPO[m - 1]} ${d}, ${y}`; };
+  const dayNum = iso => { const [y, m, d] = ymd(iso); return Date.UTC(y, m - 1, d) / 864e5; };
+  const plDash = id => id.replace("-", "–");
+  const median = a => { if (!a.length) return 0; const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  const plural = (n, one, many) => `${num(n)} ${n === 1 ? one : (many || one + "s")}`;
+  const compactWords = n => n >= 1e6 ? (n / 1e6).toFixed(2).replace(/\.?0+$/, "") + " million" : n >= 1e4 ? Math.round(n / 1e3) + ",000" : num(n);
+  const partyVar = p => p === "R" ? "rep" : p === "D" ? "dem" : "ind";
+  function sponsorTitle(s) {
+    const pre = s.chamber === "Senate" ? "Sen." : (s.full || "").startsWith("Del.") ? "Del." : (s.full || "").startsWith("Res.") ? "Res. Comm." : "Rep.";
+    return `${pre} ${s.name}`;
+  }
+  const sponsorTag = s => `${s.party}-${s.state}${s.district && s.district !== "0" ? "-" + s.district : ""}`;
+
+  // ---------- derive ----------
+  for (const l of LAWS) {
+    l.year = l.signed.slice(0, 4);
+    l.textPending = l.words == null;
+    l.words = l.words || 0;
+    l.rolls = l.floor.filter(f => f.method === "Roll call" && f.byParty);
+    const split = f => { const r = f.byParty.R || { yea: 0, nay: 0 }, d = f.byParty.D || { yea: 0, nay: 0 }; return (r.yea > r.nay) !== (d.yea > d.nay); };
+    l.floorClass = !l.rolls.length ? "none" : l.rolls.some(split) ? "party" : "bi";
+    l.cosTotal = (l.cos.R || 0) + (l.cos.D || 0) + (l.cos.I || 0);
+    l.hay = [l.id, plDash(l.id), "pub. l. " + l.id, "public law " + l.id, l.bill, l.bill.replace(/\s/g, ""), l.head, l.title, l.official, ...(l.popular || []), ...(l.short || []),
+      l.gist, l.area, ...(l.subjects || []), l.sponsor.name, l.sponsor.state, ...(l.committees || []).map(c => c.name)].join(" \u0001 ").toLowerCase();
+    l.week = Math.floor((dayNum(l.signed) - dayNum("2024-12-30")) / 7);
+  }
+  const AREAS = Object.entries(LAWS.reduce((m, l) => (m[l.area] = (m[l.area] || 0) + 1, m), {})).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(x => x[0]);
+  const byId = Object.fromEntries(LAWS.map(l => [l.id, l]));
+
+  // ---------- shapes & card bands ----------
+  function shapePath(shape, cx, cy, s) {
+    const h = s / 2;
+    switch (shape) {
+      case "square": return `M${cx - h + .4},${cy - h + .4}h${s - .8}v${s - .8}h${-(s - .8)}z`;
+      case "diamond": { const r = h * 1.18; return `M${cx},${cy - r}L${cx + r},${cy}L${cx},${cy + r}L${cx - r},${cy}z`; }
+      case "up": { const r = h * 1.12; return `M${cx},${cy - r}L${cx + r},${cy + r * .82}L${cx - r},${cy + r * .82}z`; }
+      case "down": { const r = h * 1.12; return `M${cx - r},${cy - r * .82}L${cx + r},${cy - r * .82}L${cx},${cy + r}z`; }
+      default: { const r = h * .98; return `M${cx - r},${cy}a${r},${r} 0 1,0 ${2 * r},0a${r},${r} 0 1,0 ${-2 * r},0`; }
+    }
+  }
+  const css = getComputedStyle(document.documentElement);
+  const kcol = (k, dark) => css.getPropertyValue(`--k${dark ? "d" : ""}-${k}`).trim();
+  function glyph(kind, size = 12, dark = false) {
+    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><path d="${shapePath(KIND[kind].shape, size / 2, size / 2, size * .8)}" fill="${kcol(kind, dark)}"/></svg>`;
+  }
+  // Each type's band is tiled with its own shape, staggered like the stars of a flag's canton.
+  const bandStyle = document.createElement("style");
+  bandStyle.textContent = KINDS.map(k => {
+    const c = kcol(k.key);
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><g fill='${c}' fill-opacity='.26'><path d='${shapePath(k.shape, 7.5, 7.5, 7)}'/><path d='${shapePath(k.shape, 22.5, 22.5, 7)}'/></g></svg>`;
+    return `.band-${k.key}{background:${TINT[k.key]} url("data:image/svg+xml,${encodeURIComponent(svg)}") 0 0/30px 30px}`;
+  }).join("");
+  document.head.appendChild(bandStyle);
+
+  function floorShort(l) {
+    const out = [];
+    for (const ch of ["House", "Senate"]) {
+      const fs = l.floor.filter(f => f.chamber === ch);
+      if (!fs.length) continue;
+      const f = fs[fs.length - 1];
+      out.push(`${ch} ${f.method === "Roll call" ? `${f.yea}–${f.nay}` : f.method === "Voice vote" ? "voice" : f.method === "Unanimous consent" ? "UC" : "by rule"}`);
+    }
+    return out.join(" · ");
+  }
+  const stampHTML = l => `<div class="stamp"><b>Signed</b><small>${gpo(l.signed)}</small></div>`;
+  const kindPill = l => `<span class="kind-pill label">${glyph(l.kind, 11)}${esc(KIND[l.kind].label)}</span>`;
+
+  // ---------- state ----------
+  const state = { q: "", year: "all", kinds: new Set(), floors: new Set(), parties: new Set(), origin: "all", area: null, subject: null, sort: "new" };
+  let current = [];
+  let openId = null;
+  const terms = () => state.q.toLowerCase().split(/\s+/).filter(Boolean);
+  function matches(l, skip) {
+    if (skip !== "year" && state.year !== "all" && l.year !== state.year) return false;
+    if (skip !== "kind" && state.kinds.size && !state.kinds.has(l.kind)) return false;
+    if (skip !== "floor" && state.floors.size && !state.floors.has(l.floorClass)) return false;
+    if (skip !== "party" && state.parties.size && !state.parties.has(l.sponsor.party)) return false;
+    if (skip !== "origin" && state.origin !== "all" && l.origin !== state.origin) return false;
+    if (skip !== "area" && state.area && l.area !== state.area) return false;
+    if (state.subject && !(l.subjects || []).includes(state.subject)) return false;
+    if (state.q) for (const t of terms()) if (!l.hay.includes(t)) return false;
+    return true;
+  }
+  const SORTS = {
+    new: (a, b) => b.signed.localeCompare(a.signed) || b.n - a.n,
+    old: (a, b) => a.signed.localeCompare(b.signed) || a.n - b.n,
+    long: (a, b) => b.words - a.words,
+    short: (a, b) => a.words - b.words,
+    fast: (a, b) => a.days - b.days || a.n - b.n,
+    slow: (a, b) => b.days - a.days || a.n - b.n,
+    cos: (a, b) => b.cosTotal - a.cosTotal || b.n - a.n,
+  };
+
+  // ---------- hero ----------
+  function cardHTML(l, tag = "li") {
+    return `<${tag} class="card" data-id="${l.id}">
+      <div class="band band-${l.kind}">${stampHTML(l)}${kindPill(l)}</div>
+      <div class="cbody">
+        <div class="nrow"><span class="bignum">${l.n}</span><span class="label">Pub. L. ${plDash(l.id)}<br>${esc(l.bill)}</span></div>
+        <h3><button data-open="${l.id}">${hl(l.head)}</button></h3>
+        <p class="gist">${hl(l.gist)}</p>
+        <p class="sponsor">${hl(sponsorTitle(l.sponsor))} · <b class="p-${l.sponsor.party}">${sponsorTag(l.sponsor)}</b></p>
+        <div class="foot label">
+          <span class="tag">${esc(l.area)}</span>
+          <span class="tag">${plural(l.days, "day")}</span>
+          <span class="tag">${floorShort(l)}</span>
+          <span class="tag">${l.textPending ? "Text pending" : compactWords(l.words) + " words"}</span>
+          <span class="more">More →</span>
+        </div>
+      </div>
+    </${tag}>`;
+  }
+  function renderHero() {
+    const y25 = LAWS.filter(l => l.year === "2025").length, y26 = LAWS.filter(l => l.year === "2026").length;
+    const newest = [...LAWS].sort(SORTS.new)[0];
+    const picks = [byId["119-1"], byId["119-21"], newest].filter(Boolean);
+    $("#fan").innerHTML = picks.map(l => cardHTML(l, "div")).join("");
+    $("#dek").textContent = `All ${LAWS.length} laws signed since the 119th Congress met in January 2025, one card each. Tap any card for the votes, the sponsor, the timeline and what it does.`;
+    $("#stats").innerHTML = [[LAWS.length, "Laws"], [y26, "In 2026"], [y25, "In 2025"]]
+      .map(([n, lab]) => `<li class="label"><span class="i num">${n}</span>${lab}</li>`).join("");
+    const left = dayNum(CONGRESS_END) - dayNum(TODAY);
+    $("#asof").innerHTML = `Newest: <b>Pub. L. ${plDash(newest.id)}</b>, signed ${fmt(newest.signed)}<br>Current as of ${fmt(TODAY)} · ${left > 0 ? `${left} days left in the 119th Congress` : "The 119th Congress has ended"}`;
+    $("#unprinted").textContent = LAWS.filter(l => !l.stat).length;
+    $("#privates").innerHTML = `Congress also enacted ${PRIV.length} private laws, which apply to named individuals rather than the public: ` +
+      PRIV.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">Private Law ${plDash(p.id)}</a> (${esc(p.head.replace(/^To authorize the President to award the Medal of Honor to /, "Medal of Honor for ").replace(/, for acts.*$/, "").replace(/(?<!Jr)\.$/, ""))}, signed ${fmt(p.signed)})`)
+        .reduce((acc, item, i, all) => acc + (i === 0 ? "" : i === all.length - 1 ? (all.length > 2 ? ", and " : " and ") : ", ") + item, "") + ".";
+    const counts = LAWS.reduce((m, l) => (m[l.kind] = (m[l.kind] || 0) + 1, m), {});
+    $("#legend").innerHTML = KINDS.map(k => `<span>${glyph(k.key, 12, true)}${esc(k.label)} ${counts[k.key] || 0}</span>`).join("");
+  }
+  $("#fan").addEventListener("click", e => { const c = e.target.closest(".card"); if (c) openLaw(c.dataset.id); });
+
+  // ---------- chart ----------
+  const WEEK0 = "2024-12-30";
+  const NWEEKS = Math.ceil((dayNum(CONGRESS_END) - dayNum(WEEK0) + 1) / 7);
+  function renderChart() {
+    const W = Math.max(840, $("#chartScroll").clientWidth - 36);
+    const padL = 4, padR = 4, axisH = 44, top = 26;
+    const cw = (W - padL - padR) / NWEEKS;
+    const s = Math.max(6, Math.min(9.5, cw - 2.2)), step = s + 2.2;
+    const weeks = {};
+    for (const l of LAWS) (weeks[l.week] ||= []).push(l);
+    const order = Object.fromEntries(KINDS.map((k, i) => [k.key, i]));
+    let maxStack = 0;
+    for (const w in weeks) { weeks[w].sort((a, b) => order[a.kind] - order[b.kind] || a.signed.localeCompare(b.signed) || a.n - b.n); maxStack = Math.max(maxStack, weeks[w].length); }
+    const plotH = maxStack * step + 6, H = top + plotH + axisH, base = top + plotH;
+    const xDay = iso => padL + ((dayNum(iso) - dayNum(WEEK0)) / 7) * cw;
+    const p = [`<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="rgba(255,255,255,.04)"/><line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,.22)" stroke-width="1.3"/></pattern></defs>`];
+    const bands = [
+      { from: "2025-10-01", to: "2025-11-12", label: "Government shutdown", tip: "Government shutdown, Oct. 1 to Nov. 12, 2025. Ended by Pub. L. 119–37." },
+      { from: "2026-02-14", to: "2026-04-30", label: "Partial DHS shutdown", tip: "Partial Department of Homeland Security shutdown from Feb. 14, 2026. DHS funding was enacted April 30 in Pub. L. 119–86." },
+    ];
+    for (const b of bands) {
+      const x1 = xDay(b.from), x2 = xDay(b.to);
+      p.push(`<g class="sband" data-tip="${esc(b.tip)}"><rect x="${x1}" y="${top - 16}" width="${x2 - x1}" height="${plotH + 16}" fill="url(#hatch)"/><text class="band-l" x="${x1 + 3}" y="${top - 5}">${esc(b.label)}</text></g>`);
+    }
+    const xt = Math.min(xDay(TODAY), xDay(CONGRESS_END)), xe = xDay(CONGRESS_END);
+    p.push(`<rect x="${xt}" y="${top - 16}" width="${Math.max(0, xe - xt)}" height="${plotH + 16}" fill="rgba(255,255,255,.05)"/>`);
+    p.push(`<line x1="${xt}" x2="${xt}" y1="${top - 16}" y2="${base + 6}" stroke="#fff" stroke-opacity=".8" stroke-width="1.2" stroke-dasharray="3 3"/><text class="ax" x="${xt + 5}" y="${top - 5}">TODAY</text>`);
+    p.push(`<line x1="${padL}" x2="${W - padR}" y1="${base + .5}" y2="${base + .5}" stroke="rgba(255,255,255,.7)"/>`);
+    for (let y = 2025; y <= 2026; y++) for (let m = 1; m <= 12; m++) {
+      const x = xDay(`${y}-${String(m).padStart(2, "0")}-01`), jan = m === 1;
+      p.push(`<line x1="${x}" x2="${x}" y1="${base}" y2="${base + (jan ? 30 : 6)}" stroke="rgba(255,255,255,${jan ? .6 : .3})"/><text class="ax" x="${x + 3}" y="${base + 18}">${"JFMAMJJASOND"[m - 1]}</text>`);
+      if (jan) p.push(`<text class="ax-y" x="${x + 4}" y="${base + 40}">${y}</text>`);
+    }
+    p.push(`<text class="ax" x="${xe}" y="${base + 40}" text-anchor="end">JAN. 3, 2027: CONGRESS ENDS</text>`);
+    for (const w in weeks) {
+      const cx = padL + (+w + .5) * cw;
+      weeks[w].forEach((l, i) => p.push(`<path class="mk" data-id="${l.id}" d="${shapePath(KIND[l.kind].shape, cx, base - 4 - s / 2 - i * step, s)}" fill="${kcol(l.kind, true)}"/>`));
+    }
+    $("#chart").innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Chart of ${LAWS.length} laws by week signed">${p.join("")}</svg>`;
+    const sc = $("#chartScroll");
+    $(".swipe-hint").hidden = sc.scrollWidth <= sc.clientWidth + 2;
+    updateChart();
+  }
+  function updateChart() {
+    const keep = new Set(current.map(l => l.id)), all = keep.size === LAWS.length;
+    document.querySelectorAll("#chart .mk").forEach(el => el.classList.toggle("dim", !all && !keep.has(el.dataset.id)));
+  }
+  const tip = $("#tip");
+  function showTip(html, e) {
+    tip.innerHTML = html; tip.hidden = false;
+    const r = tip.getBoundingClientRect();
+    let x = e.clientX + 14, y = e.clientY - r.height - 12;
+    if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+    if (y < 8) y = e.clientY + 18;
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  }
+  $("#chart").addEventListener("pointermove", e => {
+    if (e.pointerType !== "mouse") return;
+    const mk = e.target.closest(".mk"), band = e.target.closest(".sband");
+    if (mk) { const l = byId[mk.dataset.id]; showTip(`<span class="label">Pub. L. ${plDash(l.id)} · ${fmt(l.signed)}</span>${esc(l.head)}`, e); }
+    else if (band) showTip(esc(band.dataset.tip), e);
+    else tip.hidden = true;
+  });
+  $("#chart").addEventListener("pointerleave", () => tip.hidden = true);
+  $("#chart").addEventListener("click", e => { const mk = e.target.closest(".mk"); if (mk) { tip.hidden = true; openLaw(mk.dataset.id); } });
+
+  // ---------- filters ----------
+  const toggle = (set, v) => set.has(v) ? set.delete(v) : set.add(v);
+  function countBy(skip, keyFn) { const m = {}; for (const l of LAWS) if (matches(l, skip)) { const k = keyFn(l); m[k] = (m[k] || 0) + 1; } return m; }
+  const chipBtn = (attrs, on, label, c, extra = "") => `<button class="chip label" ${attrs} aria-pressed="${on}" ${!c && !on ? "disabled" : ""}>${extra}${label} <span class="c">${c}</span></button>`;
+  function renderFacets() {
+    const kc = countBy("kind", l => l.kind);
+    $("#quick").innerHTML = KINDS.map(k => chipBtn(`data-kind="${k.key}"`, state.kinds.has(k.key), esc(k.label), kc[k.key] || 0, glyph(k.key, 11, !state.kinds.has(k.key)))).join("");
+    $("#f-kind").innerHTML = KINDS.map(k => chipBtn(`data-kind="${k.key}"`, state.kinds.has(k.key), esc(k.label), kc[k.key] || 0, glyph(k.key, 11, !state.kinds.has(k.key)))).join("");
+    const yc = countBy("year", l => l.year), yAll = Object.values(yc).reduce((a, b) => a + b, 0);
+    $("#f-year").innerHTML = [["all", "All", yAll], ["2025", "2025", yc["2025"] || 0], ["2026", "2026", yc["2026"] || 0]].map(([k, lab, c]) => chipBtn(`data-year="${k}"`, state.year === k, lab, c)).join("");
+    const fc = countBy("floor", l => l.floorClass);
+    $("#f-floor").innerHTML = FLOORS.map(f => chipBtn(`data-floor="${f.key}"`, state.floors.has(f.key), esc(f.label), fc[f.key] || 0)).join("");
+    const pc = countBy("party", l => l.sponsor.party);
+    $("#f-party").innerHTML = ["R", "D", "I"].filter(p => LAWS.some(l => l.sponsor.party === p)).map(p => chipBtn(`data-party="${p}"`, state.parties.has(p), PARTY[p], pc[p] || 0, `<i style="width:9px;height:9px;border-radius:50%;background:var(--${partyVar(p)})"></i>`)).join("");
+    const oc = countBy("origin", l => l.origin), oAll = Object.values(oc).reduce((a, b) => a + b, 0);
+    $("#f-origin").innerHTML = [["all", "Either", oAll], ["House", "House", oc.House || 0], ["Senate", "Senate", oc.Senate || 0]].map(([k, lab, c]) => chipBtn(`data-origin="${k}"`, state.origin === k, lab, c)).join("");
+    const ac = countBy("area", l => l.area);
+    $("#f-area").innerHTML = AREAS.map(a => chipBtn(`data-area="${esc(a)}"`, state.area === a, esc(a), ac[a] || 0)).join("");
+    const n = state.kinds.size + state.floors.size + state.parties.size + (state.year !== "all") + (state.origin !== "all") + !!state.area + !!state.subject;
+    $("#fcount").hidden = !n; $("#fcount").textContent = n;
+    $("#showResults").textContent = current.length ? `Show ${plural(current.length, "law")}` : "No matches";
+  }
+  function onFacet(e) {
+    const b = e.target.closest("button.chip");
+    if (!b || b.disabled) return;
+    const d = b.dataset;
+    if (d.year) state.year = d.year;
+    else if (d.kind) toggle(state.kinds, d.kind);
+    else if (d.floor) toggle(state.floors, d.floor);
+    else if (d.party) toggle(state.parties, d.party);
+    else if (d.origin) state.origin = d.origin;
+    else if (d.area !== undefined) state.area = state.area === d.area ? null : d.area;
+    else return;
+    update();
+  }
+  $("#facets").addEventListener("click", onFacet);
+  $("#quick").addEventListener("click", onFacet);
+  function clearAll() { Object.assign(state, { q: "", year: "all", origin: "all", area: null, subject: null }); state.kinds.clear(); state.floors.clear(); state.parties.clear(); $("#q").value = ""; update(); }
+  $("#clearAll").addEventListener("click", clearAll);
+
+  // ---------- list ----------
+  function hl(text) {
+    const out = esc(text);
+    const ts = terms().filter(t => t.length > 1).map(t => esc(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    if (!ts.length) return out;
+    const re = new RegExp(`(${ts.join("|")})`, "gi");
+    return out.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, txt) => tag ? tag : txt.replace(re, "<mark>$1</mark>"));
+  }
+  function renderHead() {
+    const n = current.length;
+    $("#count").innerHTML = n === LAWS.length ? `All <em>${n}</em> laws` : `<em>${num(n)}</em> of ${LAWS.length} laws`;
+    if (!n) $("#digest").innerHTML = "";
+    else {
+      const words = current.reduce((a, l) => a + l.words, 0);
+      const longest = [...current].sort(SORTS.long)[0];
+      $("#digest").innerHTML = [
+        `Median <b>${num(Math.round(median(current.map(l => l.days))))} days</b> to become law`,
+        `<b>${current.filter(l => l.floorClass === "none").length}</b> with no recorded vote`,
+        `<b>${current.filter(l => l.sponsor.party === "R").length}</b> of ${n} with a Republican sponsor`,
+        n > 1 && words ? `<b>${compactWords(words)}</b> words, ${Math.round(longest.words / words * 100)}% in ${esc(longest.short?.[0] || longest.head)}` : `<b>${num(words)}</b> words`,
+      ].map(s => `<span>${s}</span>`).join("");
+    }
+    const chips = [];
+    if (state.q) chips.push(["q", `“${state.q}”`]);
+    if (state.year !== "all") chips.push(["year", `Signed in ${state.year}`]);
+    for (const k of state.kinds) chips.push(["kind:" + k, KIND[k].label]);
+    for (const f of state.floors) chips.push(["floor:" + f, FLOORS.find(x => x.key === f).label]);
+    for (const p of state.parties) chips.push(["party:" + p, `${PARTY[p]} sponsor`]);
+    if (state.origin !== "all") chips.push(["origin", `Started in the ${state.origin}`]);
+    if (state.area) chips.push(["area", state.area]);
+    if (state.subject) chips.push(["subject", `Subject: ${state.subject}`]);
+    $("#activeChips").innerHTML = chips.map(([k, lab]) => `<button class="chip label" data-chip="${esc(k)}" aria-label="Remove filter: ${esc(lab)}">${esc(lab)} <span aria-hidden="true">×</span></button>`).join("") +
+      (chips.length > 1 ? `<button class="clear label" data-chip="all">Clear all</button>` : "");
+    $("#activeChips").hidden = !chips.length;
+  }
+  $("#activeChips").addEventListener("click", e => {
+    const b = e.target.closest("[data-chip]"); if (!b) return;
+    const [k, v] = b.dataset.chip.split(":");
+    if (k === "all") return clearAll();
+    if (k === "q") { state.q = ""; $("#q").value = ""; }
+    else if (k === "year") state.year = "all";
+    else if (k === "kind") state.kinds.delete(v);
+    else if (k === "floor") state.floors.delete(v);
+    else if (k === "party") state.parties.delete(v);
+    else if (k === "origin") state.origin = "all";
+    else if (k === "area") state.area = null;
+    else if (k === "subject") state.subject = null;
+    update();
+  });
+  function renderFeed() {
+    $("#feed").innerHTML = current.length ? current.map(l => cardHTML(l)).join("") :
+      `<li class="empty"><b>No laws match</b>Remove a filter or try another search.</li>`;
+    if (openId) document.querySelector(`.feed .card[data-id="${openId}"]`)?.classList.add("active");
+  }
+  $("#feed").addEventListener("click", e => { const c = e.target.closest(".card"); if (c && !e.target.closest("a")) openLaw(c.dataset.id); });
+
+  function update() {
+    current = LAWS.filter(l => matches(l)).sort(SORTS[state.sort]);
+    renderFacets(); renderHead(); renderFeed(); updateChart();
+    if (openId) renderPos();
+  }
+  let qTimer;
+  $("#q").addEventListener("input", e => { clearTimeout(qTimer); qTimer = setTimeout(() => { state.q = e.target.value.trim(); update(); }, 120); });
+  $("#q").addEventListener("keydown", e => { if (e.key === "Enter") e.target.blur(); });
+  $("#sort").addEventListener("change", e => { state.sort = e.target.value; update(); });
+
+  // ---------- overlays ----------
+  const scrim = $("#scrim"), sheet = $("#sheet"), panel = $("#panel");
+  let lastFocus = null;
+  function showScrim(on) {
+    if (on) { scrim.hidden = false; void scrim.offsetWidth; scrim.classList.add("on"); document.documentElement.classList.add("locked"); }
+    else { scrim.classList.remove("on"); document.documentElement.classList.remove("locked"); setTimeout(() => { if (!scrim.classList.contains("on")) scrim.hidden = true; }, 240); }
+  }
+  function openFilters() { lastFocus = document.activeElement; sheet.classList.add("on"); sheet.setAttribute("aria-hidden", "false"); showScrim(true); setTimeout(() => $("#closeFilters").focus({ preventScroll: true }), 30); }
+  function closeFilters() { if (!sheet.classList.contains("on")) return; sheet.classList.remove("on"); sheet.setAttribute("aria-hidden", "true"); if (!openId) showScrim(false); lastFocus?.focus?.({ preventScroll: true }); }
+  $("#openFilters").addEventListener("click", openFilters);
+  $("#closeFilters").addEventListener("click", closeFilters);
+  $("#showResults").addEventListener("click", () => { closeFilters(); $("#laws").scrollIntoView({ behavior: "smooth", block: "start" }); });
+  scrim.addEventListener("click", () => { if (sheet.classList.contains("on")) closeFilters(); else closeLaw(); });
+
+  // ---------- detail panel ----------
+  // Opening a law adds a history entry, so a phone's back button closes the panel.
+  let pushed = false;
+  function openLaw(id, { fromHistory = false, dir = 0 } = {}) {
+    const l = byId[id]; if (!l) return;
+    const wasOpen = !!openId;
+    if (!wasOpen) lastFocus = document.activeElement;
+    openId = id;
+    renderDetail(l);
+    const body = $("#pbody");
+    body.classList.remove("slide-l", "slide-r");
+    if (dir) { void body.offsetWidth; body.classList.add(dir > 0 ? "slide-l" : "slide-r"); }
+    body.scrollTop = 0;
+    if (!wasOpen) {
+      panel.classList.add("on"); panel.setAttribute("aria-hidden", "false"); showScrim(true);
+      setTimeout(() => $("#closePanel").focus({ preventScroll: true }), 40);
+    }
+    document.querySelectorAll(".feed .card.active").forEach(c => c.classList.remove("active"));
+    document.querySelector(`.feed .card[data-id="${id}"]`)?.classList.add("active");
+    if (!fromHistory) {
+      try {
+        if (!wasOpen) { history.pushState({ law: id }, "", "#law-" + id); pushed = true; }
+        else history.replaceState({ law: id }, "", "#law-" + id);
+      } catch (_) {}
+    }
+  }
+  function hideLaw() {
+    if (!openId) return;
+    const id = openId; openId = null;
+    panel.classList.remove("on"); panel.setAttribute("aria-hidden", "true");
+    if (!sheet.classList.contains("on")) showScrim(false);
+    const card = document.querySelector(`.feed .card[data-id="${id}"] h3 button`);
+    (card && card.offsetParent ? card : lastFocus)?.focus?.({ preventScroll: true });
+  }
+  function closeLaw() {
+    if (!openId) return;
+    if (pushed) { pushed = false; history.back(); return; } // popstate hides the panel
+    hideLaw();
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (_) {}
+  }
+  addEventListener("popstate", () => {
+    const m = /^#law-(119-\d+)$/.exec(location.hash);
+    if (m && byId[m[1]]) openLaw(m[1], { fromHistory: true });
+    else { pushed = false; hideLaw(); }
+  });
+  $("#closePanel").addEventListener("click", closeLaw);
+  function renderPos() {
+    const i = current.findIndex(l => l.id === openId);
+    $("#pos").textContent = i >= 0 ? `${i + 1} of ${current.length}` : "Not in this list";
+    $("#prev").disabled = i <= 0;
+    $("#next").disabled = i < 0 || i >= current.length - 1;
+  }
+  function step(d) {
+    const i = current.findIndex(l => l.id === openId), nx = current[i + d];
+    if (i < 0 || !nx) return;
+    openLaw(nx.id, { dir: d });
+    document.querySelector(`.feed .card[data-id="${nx.id}"]`)?.scrollIntoView({ block: "nearest" });
+  }
+  $("#prev").addEventListener("click", () => step(-1));
+  $("#next").addEventListener("click", () => step(1));
+  // Swipe left for the next law, right for the previous one.
+  let touch = null;
+  $("#pbody").addEventListener("touchstart", e => { if (e.touches.length === 1) touch = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() }; }, { passive: true });
+  $("#pbody").addEventListener("touchend", e => {
+    if (!touch) return;
+    const t = e.changedTouches[0], dx = t.clientX - touch.x, dy = t.clientY - touch.y;
+    const quick = Date.now() - touch.t < 700;
+    touch = null;
+    if (quick && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6 && !e.target.closest(".split, .strip")) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  function voteBlock(f) {
+    const when = `${f.chamber} · ${fmt(f.date)}${f.stage !== "Passage" ? " · " + f.stage.toLowerCase() : ""}`;
+    let body;
+    if (f.method === "Roll call" && f.byParty) {
+      const total = f.chamber === "House" ? 435 : 100;
+      const seg = kind => ["R", "D", "I"].map(p => {
+        const v = f.byParty[p]?.[kind] || 0;
+        return v ? `<span class="${p}" style="width:${(v / total) * 100}%" title="${PARTY[p]}s: ${v}">${v >= (total === 100 ? 7 : 26) ? p + " " + v : ""}</span>` : "";
+      }).join("");
+      const tot = kind => ["R", "D", "I"].reduce((a, p) => a + (f.byParty[p]?.[kind] || 0), 0);
+      body = `<div class="split"><span class="lab label">Yea</span><div class="bar">${seg("yea")}<em>${tot("yea")}${f.tieBreaker ? " + VP" : ""}</em></div><span class="lab label">Nay</span><div class="bar">${seg("nay")}<em>${tot("nay")}</em></div></div>` +
+        (f.tieBreaker ? `<p class="vote-txt">The Vice President broke a 50–50 tie.</p>` : "");
+    } else {
+      const expl = f.method === "Voice vote" ? "Members called out yes or no together; no names were recorded." :
+        f.method === "Unanimous consent" ? "No one objected, so it passed without a vote." :
+        "Agreed to under a special rule adopted by the House, with no separate vote on the bill.";
+      body = `<span class="vpill label">${esc(f.method === "Other" ? "Deemed agreed by rule" : f.method)}</span><p class="vote-txt">${expl}</p>`;
+    }
+    const link = f.url ? ` · <a href="${esc(f.url)}" target="_blank" rel="noopener">Roll call ${f.roll}</a>` : "";
+    return `<div class="vote"><div class="vote-h"><b>${esc(when)}</b>${f.method === "Roll call" ? `<span class="vote-res">${f.yea}–${f.nay}</span>` : ""}</div>${body}<p class="vote-txt dim">${esc(f.text.replace(/\s*\((text|consideration)[^)]*\)\.?/g, "").trim())}${link}</p></div>`;
+  }
+  function summaryBlocks(l, all) {
+    const b = l.summary.b.filter((x, i) => x !== l.gist && !(i === 0 && (x === l.title || x === l.head || (l.short || []).includes(x))));
+    const show = all ? b : b.slice(0, 6);
+    return {
+      html: show.map(p => p.startsWith("• ") ? `<p class="li">${esc(p.slice(2))}</p>` : /^(TITLE|DIVISION|Subtitle|PART)\b/.test(p) && p.length < 160 ? `<p class="hd">${esc(p)}</p>` : `<p>${esc(p)}</p>`).join(""),
+      more: b.length - show.length, total: b.length,
+    };
+  }
+  const citation = l => { const name = l.short?.[0] || l.popular?.[0] || null; return `${name ? name + ", " : ""}Pub. L. No. ${l.id}, ${l.stat || "___ Stat. ___"} (${l.signed.slice(0, 4)}).`; };
+
+  function renderDetail(l) {
+    const isJoint = /JRES/.test(l.bill.replace(/\W/g, "").toUpperCase());
+    const t0 = dayNum(l.intro), span = Math.max(1, dayNum(l.signed) - t0);
+    const sm = l.summary ? summaryBlocks(l, false) : null;
+    const aka = [...(l.popular || []), ...(l.short || [])].filter(t => t !== l.head);
+    const links = [
+      [l.url, "Congress.gov", "History, text and amendments"],
+      [l.pdf, l.textSource === "Public Law" ? "Slip law PDF" : "Enrolled bill PDF", l.textSource === "Public Law" ? "GovInfo" : "GovInfo · slip law not yet printed"],
+      ...(l.cbo || []).slice(0, 3).map(c => [c.url, "CBO cost estimate", c.title ? c.title.slice(0, 50) + (c.title.length > 50 ? "…" : "") : "Congressional Budget Office"]),
+    ].filter(([u]) => u);
+    $("#pbody").innerHTML = `
+      <div class="phead band band-${l.kind}">${stampHTML(l)}${kindPill(l)}</div>
+      <div class="pin">
+        <div class="slip"><span>PUBLIC LAW ${plDash(l.id)}—${gpo(l.signed)}</span><span>${l.stat ? l.stat.toUpperCase() : esc(l.bill)}</span></div>
+        <div class="d-num">${l.n}</div>
+        <h2 class="d-title" id="d-title">${esc(l.head)}</h2>
+        <p class="d-official"><b>${isJoint ? "Joint Resolution" : "An Act"}</b>  ${esc((l.official || l.title).replace(/^(An act|A bill|A joint resolution)\s+/i, "").replace(/^./, c => c.toUpperCase()))}</p>
+        ${aka.length ? `<p class="note">Also titled: ${aka.map(esc).join("; ")}</p>` : ""}
+        ${l.isLabel ? `<p class="note">The headline above is a short label written for the Lawbook. The official title follows it.</p>` : ""}
+        ${!l.isLabel && !(l.short || []).length && (l.popular || []).includes(l.head) ? `<p class="note">This is the law's popular name. The enacted text carries no short title.</p>` : ""}
+        <p class="d-gist">${esc(l.gist)}</p>
+        ${l.gistPending ? `<p class="note">The Congressional Research Service has not summarized this law yet, so the line above is its official title.</p>` : ""}
+        <p class="enact">${isJoint ? "Resolved" : "Be it enacted"} by the Senate and House of Representatives of the United States of America in Congress assembled,</p>
+        <dl class="facts">
+          <div><dt class="label">Signed</dt><dd>${fmt(l.signed)}</dd></div>
+          <div><dt class="label">Introduced</dt><dd>${fmt(l.intro)}<small>in the ${esc(l.origin)} as ${esc(l.bill)}</small></dd></div>
+          <div><dt class="label">Time to law</dt><dd>${plural(l.days, "day")}</dd></div>
+          <div><dt class="label">Sponsor</dt><dd>${esc(sponsorTitle(l.sponsor))}<small><b class="p-${l.sponsor.party}">${sponsorTag(l.sponsor)}</b></small></dd></div>
+          <div><dt class="label">Cosponsors</dt><dd>${l.cosTotal || "None"}${l.cosTotal ? `<small>${["R", "D", "I"].filter(p => l.cos[p]).map(p => `<b class="p-${p}">${l.cos[p]} ${p}</b>`).join(", ")}</small>` : ""}</dd></div>
+          <div><dt class="label">Length</dt><dd>${l.textPending ? "Text not yet published" : num(l.words) + " words"}<small>${l.statPages ? plural(l.statPages, "page") + " in the Statutes at Large" : "Statutes at Large pages not yet assigned"}</small></dd></div>
+          <div><dt class="label">Type</dt><dd style="display:flex;gap:7px;align-items:center">${glyph(l.kind, 12)}${esc(KIND[l.kind].label)}</dd></div>
+          <div><dt class="label">Policy area</dt><dd><span class="ptags"><button data-area="${esc(l.area)}">${esc(l.area)}</button></span></dd></div>
+        </dl>
+        <section class="psec"><h3>Path to law <span class="label">${plural(l.days, "day")}</span></h3>
+          <div class="strip"><div class="track"></div>${l.steps.map((s, i) => `<i class="${i === l.steps.length - 1 ? "end" : ""}" style="left:${((dayNum(s.date) - t0) / span) * 100}%" title="${esc(s.label)}: ${fmt(s.date)}"></i>`).join("")}</div>
+          <ol class="steps">${l.steps.map(s => `<li><span class="sd">${fmt(s.date)}</span><span>${esc(s.label)}</span><span class="sx label">Day ${dayNum(s.date) - t0}</span></li>`).join("")}</ol>
+        </section>
+        <section class="psec"><h3>Floor votes <span class="label">${l.rolls.length ? plural(l.rolls.length, "roll call") : "No recorded vote"}</span></h3>${l.floor.map(voteBlock).join("")}</section>
+        <section class="psec"><h3>What it does <span class="label">${l.summary ? "CRS · " + esc(l.summary.v) : ""}</span></h3>
+          <div class="summary" id="sumBody">${sm ? sm.html : `<p>The Congressional Research Service has not published a summary yet. Read the text on <a href="${esc(l.url)}/text" target="_blank" rel="noopener" style="color:var(--blue)">Congress.gov</a>.</p>`}</div>
+          ${sm && sm.more > 0 ? `<button class="outline label" id="sumMore">Show the full summary · ${num(sm.total)} paragraphs</button>` : ""}
+        </section>
+        ${l.committees?.length ? `<section class="psec"><h3>Committees</h3><div class="ptags">${l.committees.map(c => `<span>${esc(c.chamber)} ${esc(c.name)}</span>`).join("")}</div></section>` : ""}
+        ${l.subjects?.length ? `<section class="psec"><h3>Subjects <span class="label">Tap to filter</span></h3><div class="ptags">${l.subjects.map(s => `<button data-subject="${esc(s)}">${esc(s)}</button>`).join("")}</div></section>` : ""}
+        <section class="psec"><h3>Read it</h3>
+          <div class="links">${links.map(([u, a, b]) => `<a href="${esc(u)}" target="_blank" rel="noopener"><span>${esc(a)} ↗</span><small>${esc(b)}</small></a>`).join("")}</div>
+          <div class="cite"><code id="citeText">${esc(citation(l))}</code><button class="outline label" id="copyCite" style="justify-self:start">Copy citation</button></div>
+        </section>
+      </div>`;
+    renderPos();
+    $("#sumMore")?.addEventListener("click", e => { $("#sumBody").innerHTML = summaryBlocks(l, true).html; e.currentTarget.remove(); });
+    $("#copyCite").addEventListener("click", () => {
+      const text = $("#citeText").textContent;
+      const sel = () => { const r = document.createRange(); r.selectNodeContents($("#citeText")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected. Copy it from the menu."); };
+      try { navigator.clipboard.writeText(text).then(() => toast("Citation copied"), sel); } catch (_) { sel(); }
+    });
+  }
+  let toastTimer;
+  function toast(msg) {
+    let t = document.querySelector(".toast");
+    if (!t) { t = document.createElement("div"); t.className = "toast label"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 1800);
+  }
+  $("#pbody").addEventListener("click", e => {
+    const s = e.target.closest("[data-subject]"), a = e.target.closest("[data-area]");
+    if (!s && !a) return;
+    if (s) state.subject = s.dataset.subject; else state.area = a.dataset.area;
+    closeLaw(); update();
+    setTimeout(() => $("#laws").scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+  });
+
+  // ---------- keyboard ----------
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") { if (sheet.classList.contains("on")) closeFilters(); else if (openId) closeLaw(); return; }
+    if (openId && !e.target.matches("input,select")) {
+      if (e.key === "ArrowLeft") step(-1);
+      else if (e.key === "ArrowRight") step(1);
+    }
+    const trap = openId ? panel : sheet.classList.contains("on") ? sheet : null;
+    if (trap && e.key === "Tab") {
+      const f = [...trap.querySelectorAll("button:not([disabled]), a[href], select")].filter(x => x.offsetParent);
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    }
+  });
+
+  // ---------- boot ----------
+  try { history.scrollRestoration = "manual"; } catch (_) {}
+  renderHero();
+  update();
+  renderChart();
+  const sc = $("#chartScroll"); sc.scrollLeft = sc.scrollWidth;
+  let rz, lastW = innerWidth;
+  addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rz); rz = setTimeout(renderChart, 150); });
+  const m = /^#law-(119-\d+)$/.exec(location.hash);
+  if (m && byId[m[1]]) openLaw(m[1], { fromHistory: true });
+})();
+</script>
+</body>
+</html>
