@@ -16453,9 +16453,9 @@
   ],
   "policyArea": "Armed Forces and National Security",
   "subjects": [
+   "Asia",
    "Conflicts and wars",
    "Military personnel and dependents",
-   "South Asia",
    "Vietnam"
   ],
   "summary": {
@@ -22123,6 +22123,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr5334ih/xml/BILLS-119hr5334ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ111/uslm/PLAW-119publ111.xml"
    ]
   },
   "cbo": [
@@ -22138,12 +22141,12 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/5334",
   "length": {
    "words": 10145,
-   "stat": null,
+   "stat": "140 Stat. 1026",
    "longTitle": "To impose sanctions and other measures with respect to the Russian Federation, as championed by the late Senator Lindsey O. Graham, and for other purposes.",
-   "statPages": null
+   "statPages": 24
   },
-  "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr5334enr/pdf/BILLS-119hr5334enr.pdf"
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ111/pdf/PLAW-119publ111.pdf"
  },
  {
   "id": "119-112",
@@ -23773,14 +23776,13 @@
    "Seafood"
   ],
   "summary": {
-   "version": "Introduced in Senate",
-   "date": "2025-01-28",
+   "version": "Public Law",
+   "date": "2026-10-15",
    "blocks": [
     "Illegal Red Snapper and Tuna Enforcement Act",
-    "This bill directs the National Oceanic and Atmospheric Administration (NOAA) and the National Institute of Standards and Technology (NIST) to jointly develop a standard methodology for identifying the country of origin of seafood to support enforcement against illegal, unreported, and unregulated fishing (IUU fishing). It also authorizes technical assistance to other countries to help combat IUU fishing and transnational organized crime.",
-    "NOAA and NIST must consult with U.S. Customs and Border Protection and the Coast Guard in developing the methodology, which must use chemical analysis to identify the country of origin of seafood. The methodology must be consistent with the needs of federal and state law enforcement agencies in combating IUU fishing. The methodology must also include a portable field kit and, to the extent practicable, be appropriate for testing prepared food (including raw preparations of seafood such as sushi). The agencies must conduct pilot studies of the methodology on red snapper and tuna.",
-    "Within two years after the bill's enactment, NIST must report to Congress regarding the methodology and a plan for operationalizing it. The report must explain any aspects of its methodology that are impracticable, whether additional research would make the methodology practicable, and whether an alternate approach might be practicable.",
-    "The bill also authorizes the Department of Defense to use operation and maintenance funds to provide technical assistance to maritime forces of other countries to help combat IUU fishing and transnational organized crime (e.g., by providing observers or data analysis)."
+    "This act directs the National Oceanic and Atmospheric Administration (NOAA) and the National Institute of Standards and Technology (NIST) to jointly develop a standard methodology for identifying the country of origin of seafood to support enforcement against illegal, unreported, and unregulated fishing (IUU fishing) and seafood fraud.",
+    "NOAA and NIST must consult with U.S. Customs and Border Protection and the Coast Guard in developing the methodology, which must use chemical analysis to identify the country of origin of seafood. The methodology must be consistent with the needs of federal and state law enforcement agencies in combating IUU fishing and seafood fraud. The methodology must also include a portable field kit and, to the extent practicable, be appropriate for testing prepared food (including raw preparations of seafood such as sushi). The agencies must conduct pilot studies of the methodology on red snapper and tuna.",
+    "Within two years after the act's enactment, NIST must report to Congress regarding the methodology and a plan for operationalizing it. The report must explain any aspects of its methodology that are impracticable, whether additional research would make the methodology practicable, and whether an alternate approach might be practicable."
    ]
   },
   "floor": [
@@ -23865,6 +23867,9 @@
    ],
    "Introduced in Senate": [
     "https://www.govinfo.gov/content/pkg/BILLS-119s283is/xml/BILLS-119s283is.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ123/uslm/PLAW-119publ123.xml"
    ]
   },
   "cbo": [
@@ -23880,12 +23885,12 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/senate-bill/283",
   "length": {
    "words": 547,
-   "stat": null,
+   "stat": "140 Stat. 1072",
    "longTitle": "To require the Under Secretary of Commerce for Standards and Technology and the Administrator of National Oceanic and Atmospheric Administration to develop a standard methodology for identifying the country of origin of seafood to support enforcement against illegal, unreported, and unregulated fishing, and for other purposes.",
-   "statPages": null
+   "statPages": 2
   },
-  "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119s283enr/pdf/BILLS-119s283enr.pdf"
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ123/pdf/PLAW-119publ123.pdf"
  },
  {
   "id": "119-124",
@@ -23933,13 +23938,13 @@
    "Securities"
   ],
   "summary": {
-   "version": "Passed Senate",
-   "date": "2025-10-09",
+   "version": "Public Law",
+   "date": "2026-10-15",
    "blocks": [
     "Retire through Ownership Act",
-    "This bill allows the fiduciary of an Employee Stock Ownership Plan (ESOP) to rely on a valuation provided by an independent valuation expert or business appraiser in determining the fair market value of the plan's securities if the securities are not traded on a national securities exchange (i.e., not publicly traded) and the expert or appraiser follows specified methodologies.",
+    "This act allows the fiduciary of an Employee Stock Ownership Plan (ESOP) to rely on a valuation provided by an independent valuation expert or business appraiser in determining the fair market value of the plan's assets if the assets are not securities for which there is a generally recognized market and the expert or appraiser follows specified methodologies.",
     "In general, ESOPs are defined contribution pension plans where employees accrue shares of their employers' stock in individual accounts as part of their compensation. After separating from employment or retiring, employees receive the cash value of their shares.",
-    "Under the bill, an independent expert or appraiser must adhere to the methodology established under the Internal Revenue Service Ruling 59-60, which prescribes the factors a professional business appraiser should consider in forming a valuation of the stock for a closely held business."
+    "Under the act, an independent expert or appraiser must adhere to the methodology established under the Internal Revenue Service Ruling 59-60, which prescribes the factors a professional business appraiser should consider in forming a valuation of the stock for a closely held business."
    ]
   },
   "floor": [
@@ -24199,6 +24204,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr227ih/xml/BILLS-119hr227ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ125/uslm/PLAW-119publ125.xml"
    ]
   },
   "cbo": [
@@ -24214,12 +24222,12 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/227",
   "length": {
    "words": 598,
-   "stat": null,
+   "stat": "140 Stat. 1076",
    "longTitle": "To allow a period in which members of the clergy may revoke their exemption from Social Security coverage, and for other purposes.",
-   "statPages": null
+   "statPages": 2
   },
-  "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr227enr/pdf/BILLS-119hr227enr.pdf"
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ125/pdf/PLAW-119publ125.pdf"
  },
  {
   "id": "119-126",
@@ -24493,6 +24501,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr1721ih/xml/BILLS-119hr1721ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ127/uslm/PLAW-119publ127.xml"
    ]
   },
   "cbo": [
@@ -24508,12 +24519,12 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/1721",
   "length": {
    "words": 361,
-   "stat": null,
+   "stat": "140 Stat. 1080",
    "longTitle": "To direct the Secretary of Commerce to conduct a study on the feasibility of manufacturing in the United States products for critical infrastructure sectors, and for other purposes.",
-   "statPages": null
+   "statPages": 2
   },
-  "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr1721enr/pdf/BILLS-119hr1721enr.pdf"
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ127/pdf/PLAW-119publ127.pdf"
  },
  {
   "id": "119-128",
@@ -24646,6 +24657,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr2388ih/xml/BILLS-119hr2388ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ128/uslm/PLAW-119publ128.xml"
    ]
   },
   "cbo": [
@@ -24662,12 +24676,12 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/2388",
   "length": {
    "words": 521,
-   "stat": null,
+   "stat": "140 Stat. 1082",
    "longTitle": "To take certain Federal land in the State of Washington into trust for the Lower Elwha Klallam Tribe, and for other purposes.",
-   "statPages": null
+   "statPages": 2
   },
-  "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr2388enr/pdf/BILLS-119hr2388enr.pdf"
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ128/pdf/PLAW-119publ128.pdf"
  },
  {
   "id": "119-129",
@@ -24717,13 +24731,13 @@
    "Licensing and registrations"
   ],
   "summary": {
-   "version": "Introduced in House",
-   "date": "2025-03-31",
+   "version": "Public Law",
+   "date": "2026-10-20",
    "blocks": [
     "Romance Scam Prevention Act",
-    "This bill requires online dating service providers (i.e., mobile applications or websites) to provide users with a fraud ban notification if the user has established an account with the service and received a message through the service from a banned user of the service.",
-    "The fraud ban notification must include (1) the username or other profile identifier of the banned user and the most recent time when the user who is receiving the notification sent or received a message through the service to or from the banned user, (2) a statement that the banned user may have been using a false identity or attempting to defraud other users, (3) a statement that the user should not send cash (or another form of currency) or personal financial information to another user, (4) information about avoiding online fraud (e.g., a link to another website or a disclosure) and (5) contact information for the provider's customer service department.",
-    "The bill provides for enforcement of these requirements by the Federal Trade Commission and state attorneys general."
+    "This act requires online dating service providers (i.e., mobile applications or websites) to provide users with a fraud ban notification if the user has established an account with the service and received a message through the service from a banned user of the service.",
+    "The fraud ban notification must include (1) the username or other profile identifier of the banned user and the most recent time when the user who is receiving the notification sent or received a message through the service to or from the banned user, (2) a statement that the banned user may have been using a false identity or attempting to defraud other users, (3) a statement that the user should not send cash (or another form of currency) or personal financial information to another user, (4) information about avoiding online fraud (e.g., a link to another website or a disclosure), and (5) contact information for the provider's customer service department.",
+    "The act provides for enforcement of these requirements by the Federal Trade Commission and state attorneys general."
    ]
   },
   "floor": [
@@ -24793,6 +24807,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr2481ih/xml/BILLS-119hr2481ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ129/uslm/PLAW-119publ129.xml"
    ]
   },
   "cbo": [
@@ -24808,12 +24825,12 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/2481",
   "length": {
    "words": 1647,
-   "stat": null,
+   "stat": "140 Stat. 1084",
    "longTitle": "To require online dating service providers to provide fraud ban notifications to online dating service members, and for other purposes.",
-   "statPages": null
+   "statPages": 4
   },
-  "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr2481enr/pdf/BILLS-119hr2481enr.pdf"
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ129/pdf/PLAW-119publ129.pdf"
  },
  {
   "id": "119-130",
@@ -24949,6 +24966,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr3620ih/xml/BILLS-119hr3620ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ130/uslm/PLAW-119publ130.xml"
    ]
   },
   "cbo": [
@@ -24965,12 +24985,12 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/3620",
   "length": {
    "words": 564,
-   "stat": null,
+   "stat": "140 Stat. 1089",
    "longTitle": "To provide for the conveyance of certain property to the Southcentral Foundation located in Anchorage, Alaska, and for other purposes.",
-   "statPages": null
+   "statPages": 2
   },
-  "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr3620enr/pdf/BILLS-119hr3620enr.pdf"
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ130/pdf/PLAW-119publ130.pdf"
  },
  {
   "id": "119-131",
@@ -25384,6 +25404,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr6380ih/xml/BILLS-119hr6380ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ133/uslm/PLAW-119publ133.xml"
    ]
   },
   "cbo": [
@@ -25404,12 +25427,12 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/6380",
   "length": {
    "words": 517,
-   "stat": null,
+   "stat": "140 Stat. 1095",
    "longTitle": "To redesignate the Chiricahua National Monument in the State of Arizona as Chiricahua National Park, and for other purposes.",
-   "statPages": null
+   "statPages": 2
   },
-  "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr6380enr/pdf/BILLS-119hr6380enr.pdf"
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ133/pdf/PLAW-119publ133.pdf"
  },
  {
   "id": "119-134",
@@ -25538,6 +25561,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr7831ih/xml/BILLS-119hr7831ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ134/uslm/PLAW-119publ134.xml"
    ]
   },
   "cbo": [],
@@ -25547,12 +25573,297 @@
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/7831",
   "length": {
    "words": 184,
-   "stat": null,
+   "stat": "140 Stat. 1097",
    "longTitle": "To amend the Mineral Leasing Act to extend the period of time during which the Secretary of the Interior is required to collect a fee for each new application for a permit to drill, and for other purposes.",
+   "statPages": 1
+  },
+  "textSource": "Public Law",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/PLAW-119publ134/pdf/PLAW-119publ134.pdf"
+ },
+ {
+  "id": "119-135",
+  "lawType": "Public Law",
+  "n": 135,
+  "billType": "HR",
+  "billNumber": 952,
+  "bill": "H.R. 952",
+  "title": "Reversionary Interest Conveyance Act",
+  "shortTitles": [
+   "Reversionary Interest Conveyance Act"
+  ],
+  "popularTitles": [],
+  "officialTitle": "To convey the reversionary interest of the United States in certain land in Sacramento, California.",
+  "introduced": "2025-02-04",
+  "presented": "2026-10-14",
+  "signed": "2026-10-22",
+  "days": 625,
+  "originChamber": "House",
+  "sponsor": {
+   "name": "Doris Matsui",
+   "full": "Rep. Matsui, Doris O. [D-CA-7]",
+   "party": "D",
+   "state": "CA",
+   "district": "7",
+   "bioguide": "M001163",
+   "chamber": "House"
+  },
+  "cosponsors": {
+   "R": 0,
+   "D": 0,
+   "I": 0
+  },
+  "cosponsorsWithdrawn": 0,
+  "committees": [
+   {
+    "chamber": "Senate",
+    "name": "Energy and Natural Resources Committee"
+   },
+   {
+    "chamber": "House",
+    "name": "Natural Resources Committee"
+   }
+  ],
+  "policyArea": "Public Lands and Natural Resources",
+  "subjects": [
+   "California",
+   "Land transfers"
+  ],
+  "summary": {
+   "version": "Introduced in House",
+   "date": "2025-02-04",
+   "blocks": [
+    "Reversionary Interest Conveyance Act",
+    "This bill directs the Bureau of Land Management (BLM) to offer to sell the reversionary interest of the United States in approximately 8.43 acres of land in Sacramento, California, as generally depicted on a specified map dated November 7, 2022. Within two years of receiving a request from the owner of the land, the BLM must offer the reversionary interest and convey the reversionary interest to the buyer upon payment. The payment must be in an amount that is at least the fair market value of the reversionary interest. The buyer must also pay all costs related to the applicable conveyance of the reversionary interest, including all surveys, appraisals, and other administrative costs.",
+    "The bill subjects the conveyance to valid existing rights.",
+    "The proceeds from the sale must be deposited into Federal Land Disposal Account."
+   ]
+  },
+  "floor": [
+   {
+    "method": "Voice vote",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "House",
+    "date": "2025-05-13",
+    "stage": "Passage",
+    "text": "On motion to suspend the rules and pass the bill Agreed to by voice vote. (text: CR H1982)",
+    "url": null
+   },
+   {
+    "method": "Unanimous consent",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "Senate",
+    "date": "2026-09-22",
+    "stage": "Passage",
+    "text": "Passed Senate without amendment by Unanimous Consent. (consideration: CR S4882-4883)",
+    "url": null
+   }
+  ],
+  "milestones": [
+   {
+    "label": "Introduced",
+    "date": "2025-02-04"
+   },
+   {
+    "label": "Reported by committee",
+    "date": "2026-07-23"
+   },
+   {
+    "label": "Passage \u00b7 House",
+    "date": "2025-05-13"
+   },
+   {
+    "label": "Passage \u00b7 Senate",
+    "date": "2026-09-22"
+   },
+   {
+    "label": "Presented to the President",
+    "date": "2026-10-14"
+   },
+   {
+    "label": "Signed into law",
+    "date": "2026-10-22"
+   }
+  ],
+  "actionCount": 19,
+  "textUrls": {
+   "Enrolled Bill": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr952enr/uslm/BILLS-119hr952enr.xml",
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr952enr/xml/BILLS-119hr952enr.xml"
+   ],
+   "Reported to Senate": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr952rs/xml/BILLS-119hr952rs.xml"
+   ],
+   "Referred in Senate": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr952rfs/xml/BILLS-119hr952rfs.xml"
+   ],
+   "Engrossed in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr952eh/xml/BILLS-119hr952eh.xml"
+   ],
+   "Introduced in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr952ih/xml/BILLS-119hr952ih.xml"
+   ]
+  },
+  "cbo": [],
+  "reports": [],
+  "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/952",
+  "length": {
+   "words": 567,
+   "stat": null,
+   "longTitle": "To convey the reversionary interest of the United States in certain land in Sacramento, California.",
    "statPages": null
   },
   "textSource": "Enrolled Bill",
-  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr7831enr/pdf/BILLS-119hr7831enr.pdf"
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr952enr/pdf/BILLS-119hr952enr.pdf"
+ },
+ {
+  "id": "119-136",
+  "lawType": "Public Law",
+  "n": 136,
+  "billType": "HR",
+  "billNumber": 7022,
+  "bill": "H.R. 7022",
+  "title": "Mystic Alerts Act",
+  "shortTitles": [
+   "Mystic Alerts Act"
+  ],
+  "popularTitles": [],
+  "officialTitle": "To provide for the transmission of emergency alerts by satellite, and for other purposes.",
+  "introduced": "2026-01-12",
+  "presented": "2026-10-15",
+  "signed": "2026-10-22",
+  "days": 283,
+  "originChamber": "House",
+  "sponsor": {
+   "name": "August Pfluger",
+   "full": "Rep. Pfluger, August [R-TX-11]",
+   "party": "R",
+   "state": "TX",
+   "district": "11",
+   "bioguide": "P000048",
+   "chamber": "House"
+  },
+  "cosponsors": {
+   "R": 2,
+   "D": 2,
+   "I": 0
+  },
+  "cosponsorsWithdrawn": 0,
+  "committees": [
+   {
+    "chamber": "Senate",
+    "name": "Commerce, Science, and Transportation Committee"
+   },
+   {
+    "chamber": "House",
+    "name": "Energy and Commerce Committee"
+   }
+  ],
+  "policyArea": "Science, Technology, Communications",
+  "subjects": [
+   "Administrative law and regulatory procedures",
+   "Emergency communications systems",
+   "Federal Communications Commission (FCC)",
+   "Spacecraft and satellites",
+   "Telephone and wireless communication",
+   "User charges and fees"
+  ],
+  "summary": {
+   "version": "Introduced in House",
+   "date": "2026-01-12",
+   "blocks": [
+    "Mystic Alerts Act",
+    "This bill provides for wireless emergency alerts to be transmitted to mobile devices via satellite. (Currently, wireless emergency alerts are sent via terrestrial mobile networks to individual devices in geographically targeted areas. Commercial mobile service providers are not required to participate; only devices connected to a participating service provider\u2019s network receive alerts.)",
+    "Under the bill, commercial mobile service providers that participate in the wireless emergency alerts system must give notice to the Federal Communications Commission (FCC) indicating whether they will transmit such alerts via satellite (in addition to sending alerts via terrestrial networks).",
+    "The FCC must establish technical standards and other regulations to enable satellite emergency alerts. Providers that opt to transmit emergency alerts via satellite must comply with such regulations.",
+    "If a provider elects not to transmit satellite alerts, the provider must give notice of that election to new and existing subscribers. Separately, mobile service subscribers may opt out of receiving satellite alerts."
+   ]
+  },
+  "floor": [
+   {
+    "method": "Voice vote",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "House",
+    "date": "2026-04-20",
+    "stage": "Passage",
+    "text": "On motion to suspend the rules and pass the bill, as amended Agreed to by voice vote. (text: CR H2970)",
+    "url": null
+   },
+   {
+    "method": "Unanimous consent",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "Senate",
+    "date": "2026-09-30",
+    "stage": "Passage",
+    "text": "Passed Senate without amendment by Unanimous Consent.",
+    "url": null
+   }
+  ],
+  "milestones": [
+   {
+    "label": "Introduced",
+    "date": "2026-01-12"
+   },
+   {
+    "label": "Reported by committee",
+    "date": "2026-04-15"
+   },
+   {
+    "label": "Passage \u00b7 House",
+    "date": "2026-04-20"
+   },
+   {
+    "label": "Passage \u00b7 Senate",
+    "date": "2026-09-30"
+   },
+   {
+    "label": "Presented to the President",
+    "date": "2026-10-15"
+   },
+   {
+    "label": "Signed into law",
+    "date": "2026-10-22"
+   }
+  ],
+  "actionCount": 24,
+  "textUrls": {
+   "Enrolled Bill": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7022enr/uslm/BILLS-119hr7022enr.xml",
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7022enr/xml/BILLS-119hr7022enr.xml"
+   ],
+   "Referred in Senate": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7022rfs/xml/BILLS-119hr7022rfs.xml"
+   ],
+   "Engrossed in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7022eh/xml/BILLS-119hr7022eh.xml"
+   ],
+   "Reported in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7022rh/xml/BILLS-119hr7022rh.xml"
+   ],
+   "Introduced in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7022ih/xml/BILLS-119hr7022ih.xml"
+   ]
+  },
+  "cbo": [],
+  "reports": [
+   "H. Rept. 119-616"
+  ],
+  "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/7022",
+  "length": {
+   "words": 866,
+   "stat": null,
+   "longTitle": "To provide for the transmission of emergency alerts by satellite, and for other purposes.",
+   "statPages": null
+  },
+  "textSource": "Enrolled Bill",
+  "pdfUrl": "https://www.govinfo.gov/content/pkg/BILLS-119hr7022enr/pdf/BILLS-119hr7022enr.pdf"
  },
  {
   "id": "119-1",
@@ -25591,12 +25902,9 @@
     "name": "Armed Services Committee"
    }
   ],
-  "policyArea": "Armed Forces and National Security",
+  "policyArea": null,
   "subjects": [
-   "Conflicts and wars",
-   "Military personnel and dependents",
-   "South Asia",
-   "Vietnam"
+   "Private Legislation"
   ],
   "summary": {
    "version": "Public Law",
