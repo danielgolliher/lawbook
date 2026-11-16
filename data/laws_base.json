@@ -16406,7 +16406,7 @@
     "TITLE I--COMMITTEE ON HOMELAND SECURITY AND GOVERNMENTAL AFFAIRS",
     "(Sec. 101) This section provides funding for CBP to hire, pay, train, and equip Border Patrol agents and Border Patrol support personnel to conduct functions other than immigration enforcement and customs functions.",
     "The funds provided by this section may not be used to recruit, hire, or train personnel for the duties of processing coordinators after October 31, 2028.",
-    "(Sec. 102) This section provides funding to ICE for (1) hiring, paying, training, and equipping Homeland Security Investigations (HIS) agents and support personnel; and (2) other necessary expenses for HSI\u2019s mission support and operations and maintenance.",
+    "(Sec. 102) This section provides funding to ICE for (1) hiring, paying, training, and equipping Homeland Security Investigations (HSI) agents and support personnel; and (2) other necessary expenses for HSI\u2019s mission support and operations and maintenance.",
     "It also requires specified funds to be used to hire, pay, and equip additional child exploitation investigators and forensics analysts for certain HSI offices to (1) support the identification and rescue of victims of child sexual exploitation and abuse, and (2) train such personnel and state and local law enforcement regarding identifying victims of child sexual exploitation and abuse.",
     "The funds provided by this section must be used for functions other than those related to HSI\u2019s immigration enforcement and customs enforcement missions.",
     "(Sec. 103) This section provides funding to CBP for border security, technology, and screening, including",
@@ -20107,6 +20107,9 @@
    ],
    "Introduced in Senate": [
     "https://www.govinfo.gov/content/pkg/BILLS-119s195is/xml/BILLS-119s195is.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ121/uslm/PLAW-119publ121.xml"
    ]
   },
   "cbo": [
@@ -22305,11 +22308,11 @@
    "U.S. Commission on International Religious Freedom"
   ],
   "summary": {
-   "version": "Passed Senate",
-   "date": "2026-09-29",
+   "version": "Public Law",
+   "date": "2026-11-03",
    "blocks": [
     "United States Commission on International Religious Freedom Reauthorization Act of 2026",
-    "This bill reauthorizes the U.S. Commission on International Religious Freedom through 2028. The commission is an independent federal commission tasked with monitoring international religious freedom conditions, reviewing U.S. government policy, and making policy recommendations. (Under current law, the commission is authorized through December 11, 2026.)"
+    "This act reauthorizes the U.S. Commission on International Religious Freedom through 2028. The commission is an independent federal commission tasked with monitoring international religious freedom conditions, reviewing U.S. government policy, and making policy recommendations. (Under current law, the commission is authorized through December 11, 2026.)"
    ]
   },
   "floor": [
@@ -22376,6 +22379,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr1744ih/xml/BILLS-119hr1744ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ137/uslm/PLAW-119publ137.xml"
    ]
   },
   "cbo": [
@@ -22522,6 +22528,9 @@
    ],
    "Introduced in House": [
     "https://www.govinfo.gov/content/pkg/BILLS-119hr8205ih/xml/BILLS-119hr8205ih.xml"
+   ],
+   "Public Law": [
+    "https://www.govinfo.gov/content/pkg/PLAW-119publ138/uslm/PLAW-119publ138.xml"
    ]
   },
   "cbo": [],
@@ -22529,6 +22538,553 @@
    "H. Rept. 119-733"
   ],
   "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/8205"
+ },
+ {
+  "id": "119-139",
+  "lawType": "Public Law",
+  "n": 139,
+  "billType": "HR",
+  "billNumber": 997,
+  "bill": "H.R. 997",
+  "title": "National Taxpayer Advocate Enhancement Act of 2025",
+  "shortTitles": [
+   "National Taxpayer Advocate Enhancement Act of 2025"
+  ],
+  "popularTitles": [],
+  "officialTitle": "To amend the Internal Revenue Code of 1986 to conform to the intent of the Internal Revenue Service Restructuring and Reform Act of 1998, as set forth in the joint explanatory statement of the committee of conference accompanying Conference Report 105-599, that the National Taxpayer Advocate be able to hire and consult counsel as appropriate.",
+  "introduced": "2025-02-05",
+  "presented": "2026-11-09",
+  "signed": "2026-11-10",
+  "days": 643,
+  "originChamber": "House",
+  "sponsor": {
+   "name": "Randy Feenstra",
+   "full": "Rep. Feenstra, Randy [R-IA-4]",
+   "party": "R",
+   "state": "IA",
+   "district": "4",
+   "bioguide": "F000446",
+   "chamber": "House"
+  },
+  "cosponsors": {
+   "R": 0,
+   "D": 1,
+   "I": 0
+  },
+  "cosponsorsWithdrawn": 0,
+  "committees": [
+   {
+    "chamber": "Senate",
+    "name": "Finance Committee"
+   },
+   {
+    "chamber": "House",
+    "name": "Ways and Means Committee"
+   }
+  ],
+  "policyArea": "Taxation",
+  "subjects": [
+   "Federal officials",
+   "Lawyers and legal services",
+   "Tax administration and collection, taxpayers"
+  ],
+  "summary": {
+   "version": "Introduced in House",
+   "date": "2025-02-05",
+   "blocks": [
+    "National Taxpayer Advocate Enhancement Act of 2025",
+    "This bill authorizes the National Taxpayer Advocate to appoint legal counsel within the Taxpayer Advocate Service (TAS) to report directly to the National Taxpayer Advocate. The bill also expands the authority of the National Taxpayer Advocate to take personnel actions with respect to local taxpayer advocates (located in each state) to include actions with respect to any employee of TAS.",
+    "Currently, pursuant to a Department of the Treasury order, all legal counsel whose duties include providing legal advice to any official in any office or bureau of Treasury are part of the Legal Division within Treasury and under the supervision of the General Counsel, with limited exceptions. TAS assists taxpayers in matters involving the Internal Revenue Service (IRS) and is part of the IRS, within Treasury."
+   ]
+  },
+  "floor": [
+   {
+    "method": "Roll call",
+    "yea": 385,
+    "nay": 0,
+    "roll": 85,
+    "chamber": "House",
+    "date": "2025-03-31",
+    "stage": "Passage",
+    "text": "On motion to suspend the rules and pass the bill, as amended Agreed to by the Yeas and Nays: (2/3 required): 385 - 0 (Roll no. 85). (text: CR H1349-1350)",
+    "url": "https://clerk.house.gov/evs/2025/roll085.xml"
+   },
+   {
+    "method": "Unanimous consent",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "Senate",
+    "date": "2026-09-28",
+    "stage": "Passage",
+    "text": "Passed Senate without amendment by Unanimous Consent. (consideration: CR S5123)",
+    "url": null
+   }
+  ],
+  "milestones": [
+   {
+    "label": "Introduced",
+    "date": "2025-02-05"
+   },
+   {
+    "label": "Reported by committee",
+    "date": "2025-03-27"
+   },
+   {
+    "label": "Passage \u00b7 House",
+    "date": "2025-03-31"
+   },
+   {
+    "label": "Passage \u00b7 Senate",
+    "date": "2026-09-28"
+   },
+   {
+    "label": "Presented to the President",
+    "date": "2026-11-09"
+   },
+   {
+    "label": "Signed into law",
+    "date": "2026-11-10"
+   }
+  ],
+  "actionCount": 22,
+  "textUrls": {
+   "Enrolled Bill": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr997enr/uslm/BILLS-119hr997enr.xml",
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr997enr/xml/BILLS-119hr997enr.xml"
+   ],
+   "Referred in Senate": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr997rfs/xml/BILLS-119hr997rfs.xml"
+   ],
+   "Engrossed in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr997eh/xml/BILLS-119hr997eh.xml"
+   ],
+   "Reported in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr997rh/xml/BILLS-119hr997rh.xml"
+   ],
+   "Introduced in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr997ih/xml/BILLS-119hr997ih.xml"
+   ]
+  },
+  "cbo": [
+   {
+    "title": "H.R. 997, National Taxpayer Advocate Enhancement Act of 2025",
+    "url": "https://www.cbo.gov/publication/61283",
+    "date": "2025-04-01T15:16:00Z"
+   }
+  ],
+  "reports": [
+   "H. Rept. 119-46"
+  ],
+  "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/997"
+ },
+ {
+  "id": "119-140",
+  "lawType": "Public Law",
+  "n": 140,
+  "billType": "HR",
+  "billNumber": 1703,
+  "bill": "H.R. 1703",
+  "title": "Choices for Increased Mobility Act of 2026",
+  "shortTitles": [
+   "Choices for Increased Mobility Act of 2026"
+  ],
+  "popularTitles": [],
+  "officialTitle": "To amend title XVIII of the Social Security Act to clarify payment rules for manual wheelchairs under part B of the Medicare program.",
+  "introduced": "2025-02-27",
+  "presented": "2026-11-09",
+  "signed": "2026-11-10",
+  "days": 621,
+  "originChamber": "House",
+  "sponsor": {
+   "name": "John Joyce",
+   "full": "Rep. Joyce, John [R-PA-13]",
+   "party": "R",
+   "state": "PA",
+   "district": "13",
+   "bioguide": "J000302",
+   "chamber": "House"
+  },
+  "cosponsors": {
+   "R": 6,
+   "D": 4,
+   "I": 0
+  },
+  "cosponsorsWithdrawn": 0,
+  "committees": [
+   {
+    "chamber": "Senate",
+    "name": "Finance Committee"
+   },
+   {
+    "chamber": "House",
+    "name": "Ways and Means Committee"
+   },
+   {
+    "chamber": "House",
+    "name": "Energy and Commerce Committee"
+   }
+  ],
+  "policyArea": "Health",
+  "subjects": [
+   "Aging",
+   "Disability and paralysis",
+   "Health care costs and insurance",
+   "Health technology, devices, supplies",
+   "Medicare"
+  ],
+  "summary": {
+   "version": "Introduced in House",
+   "date": "2025-02-27",
+   "blocks": [
+    "Choices for Increased Mobility Act of 2025",
+    "This bill requires the Centers for Medicare & Medicaid Services (CMS) to establish specific billing codes under Medicare for certain materials used in ultralightweight manual wheelchairs.",
+    "Specifically, the CMS must establish at least two billing codes for the base of the wheelchair, with at least one code for a base with titanium or carbon fiber construction material and at least one code for a base without these materials. Suppliers receive the same payment under Medicare for these wheelchairs as would otherwise apply, but may bill beneficiaries for any difference between the payment and the actual charge for the wheelchair. The CMS may require suppliers to inform beneficiaries of their potential financial liability in these cases."
+   ]
+  },
+  "floor": [
+   {
+    "method": "Voice vote",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "House",
+    "date": "2026-07-20",
+    "stage": "Passage",
+    "text": "On motion to suspend the rules and pass the bill, as amended Agreed to by voice vote. (text: CR H4636-4637)",
+    "url": null
+   },
+   {
+    "method": "Voice vote",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "Senate",
+    "date": "2026-09-30",
+    "stage": "Passage",
+    "text": "Passed Senate without amendment by Voice Vote.",
+    "url": null
+   }
+  ],
+  "milestones": [
+   {
+    "label": "Introduced",
+    "date": "2025-02-27"
+   },
+   {
+    "label": "Reported by committee",
+    "date": "2026-07-18"
+   },
+   {
+    "label": "Passage \u00b7 House",
+    "date": "2026-07-20"
+   },
+   {
+    "label": "Passage \u00b7 Senate",
+    "date": "2026-09-30"
+   },
+   {
+    "label": "Presented to the President",
+    "date": "2026-11-09"
+   },
+   {
+    "label": "Signed into law",
+    "date": "2026-11-10"
+   }
+  ],
+  "actionCount": 24,
+  "textUrls": {
+   "Enrolled Bill": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1703enr/uslm/BILLS-119hr1703enr.xml",
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1703enr/xml/BILLS-119hr1703enr.xml"
+   ],
+   "Referred in Senate": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1703rfs/xml/BILLS-119hr1703rfs.xml"
+   ],
+   "Engrossed in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1703eh/xml/BILLS-119hr1703eh.xml"
+   ],
+   "Reported in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1703rh/xml/BILLS-119hr1703rh.xml"
+   ],
+   "Introduced in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1703ih/xml/BILLS-119hr1703ih.xml"
+   ]
+  },
+  "cbo": [],
+  "reports": [
+   "H. Rept. 119-753"
+  ],
+  "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/1703"
+ },
+ {
+  "id": "119-141",
+  "lawType": "Public Law",
+  "n": 141,
+  "billType": "HR",
+  "billNumber": 1945,
+  "bill": "H.R. 1945",
+  "title": "America's National Churchill Museum National Historic Landmark Act",
+  "shortTitles": [
+   "America's National Churchill Museum National Historic Landmark Act"
+  ],
+  "popularTitles": [],
+  "officialTitle": "To designate the America's National Churchill Museum National Historic Landmark, and for other purposes.",
+  "introduced": "2025-03-06",
+  "presented": "2026-11-05",
+  "signed": "2026-11-10",
+  "days": 614,
+  "originChamber": "House",
+  "sponsor": {
+   "name": "Robert Onder",
+   "full": "Rep. Onder, Robert [R-MO-3]",
+   "party": "R",
+   "state": "MO",
+   "district": "3",
+   "bioguide": "O000177",
+   "chamber": "House"
+  },
+  "cosponsors": {
+   "R": 2,
+   "D": 1,
+   "I": 0
+  },
+  "cosponsorsWithdrawn": 0,
+  "committees": [
+   {
+    "chamber": "House",
+    "name": "Natural Resources Committee"
+   }
+  ],
+  "policyArea": "Public Lands and Natural Resources",
+  "subjects": [
+   "Congressional oversight",
+   "Government studies and investigations",
+   "Historic sites and heritage areas",
+   "Missouri",
+   "Monuments and memorials",
+   "World history"
+  ],
+  "summary": {
+   "version": "Introduced in House",
+   "date": "2025-03-06",
+   "blocks": [
+    "America's National Churchill Museum National Historic Landmark Act",
+    "This bill designates the America\u2019s National Churchill Museum, including the Winston Churchill Memorial, located at Westminster College in Fulton, Missouri, as the America\u2019s National Churchill Museum National Historic Landmark. (Former British Prime Minister Winston Churchill gave a speech titled The Sinews of Peace, also widely known as the Iron Curtain Speech, at the college in 1946.)",
+    "The bill permits the Department of the Interior to enter into cooperative agreements with public and private entities for the purposes of protecting historic resources at the landmark and providing educational and interpretive facilities for the public. Interior may provide technical and financial assistance to partner entities.",
+    "The bill also directs Interior to conduct a special resource study to evaluate the national significance of the landmark and to determine the suitability and feasibility of designating it as a unit of the National Park System. The study must consider alternatives to that designation for the preservation, protection, and interpretation of the landmark, and must include cost estimates associated with identified alternatives."
+   ]
+  },
+  "floor": [
+   {
+    "method": "Voice vote",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "House",
+    "date": "2026-03-03",
+    "stage": "Passage",
+    "text": "On motion to suspend the rules and pass the bill Agreed to by voice vote. (text: CR H2356)",
+    "url": null
+   },
+   {
+    "method": "Unanimous consent",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "Senate",
+    "date": "2026-09-29",
+    "stage": "Passage",
+    "text": "Passed Senate without amendment by Unanimous Consent. (consideration: CR S5140)",
+    "url": null
+   }
+  ],
+  "milestones": [
+   {
+    "label": "Introduced",
+    "date": "2025-03-06"
+   },
+   {
+    "label": "Reported by committee",
+    "date": "2026-02-24"
+   },
+   {
+    "label": "Passage \u00b7 House",
+    "date": "2026-03-03"
+   },
+   {
+    "label": "Passage \u00b7 Senate",
+    "date": "2026-09-29"
+   },
+   {
+    "label": "Presented to the President",
+    "date": "2026-11-05"
+   },
+   {
+    "label": "Signed into law",
+    "date": "2026-11-10"
+   }
+  ],
+  "actionCount": 22,
+  "textUrls": {
+   "Enrolled Bill": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1945enr/uslm/BILLS-119hr1945enr.xml",
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1945enr/xml/BILLS-119hr1945enr.xml"
+   ],
+   "Received in Senate": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1945rds/xml/BILLS-119hr1945rds.xml"
+   ],
+   "Engrossed in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1945eh/xml/BILLS-119hr1945eh.xml"
+   ],
+   "Reported in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1945rh/xml/BILLS-119hr1945rh.xml"
+   ],
+   "Introduced in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr1945ih/xml/BILLS-119hr1945ih.xml"
+   ]
+  },
+  "cbo": [
+   {
+    "title": "H.R. 1945, America\u2019s National Churchill Museum National Historic Landmark Act",
+    "url": "https://www.cbo.gov/publication/62167",
+    "date": "2026-02-23T20:32:00Z"
+   }
+  ],
+  "reports": [
+   "H. Rept. 119-517"
+  ],
+  "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/1945"
+ },
+ {
+  "id": "119-142",
+  "lawType": "Public Law",
+  "n": 142,
+  "billType": "HR",
+  "billNumber": 7730,
+  "bill": "H.R. 7730",
+  "title": "Bankruptcy Threshold Adjustment Act",
+  "shortTitles": [
+   "Bankruptcy Threshold Adjustment Act"
+  ],
+  "popularTitles": [],
+  "officialTitle": "To amend title 11, United States Code, to modify certain bankruptcy eligibility requirements, and for other purposes.",
+  "introduced": "2026-02-26",
+  "presented": "2026-11-05",
+  "signed": "2026-11-10",
+  "days": 257,
+  "originChamber": "House",
+  "sponsor": {
+   "name": "Ben Cline",
+   "full": "Rep. Cline, Ben [R-VA-6]",
+   "party": "R",
+   "state": "VA",
+   "district": "6",
+   "bioguide": "C001118",
+   "chamber": "House"
+  },
+  "cosponsors": {
+   "R": 3,
+   "D": 3,
+   "I": 0
+  },
+  "cosponsorsWithdrawn": 0,
+  "committees": [
+   {
+    "chamber": "House",
+    "name": "Judiciary Committee"
+   }
+  ],
+  "policyArea": "Finance and Financial Sector",
+  "subjects": [
+   "Bankruptcy",
+   "Debt collection",
+   "Small business"
+  ],
+  "summary": {
+   "version": "Introduced in House",
+   "date": "2026-02-26",
+   "blocks": [
+    "Bankruptcy Threshold Adjustment Act of 2026",
+    "This bill restores changes that expired in 2024 applicable to debt limits for Subchapter V (small business reorganization) and Chapter 13 (the wage earner's plan) bankruptcies.",
+    "Specifically, the bill increases the debt limit under Subchapter V from approximately $3.4 million to $7.5 million and increases the cumulative debt limit under Chapter 13 from approximately $2.1 million to $2.75 million.",
+    "The bill also applies both secured and unsecured debt towards the Chapter 13 limit. (Currently, separate limits apply to secured and unsecured debt under Chapter 13 bankruptcy.)"
+   ]
+  },
+  "floor": [
+   {
+    "method": "Voice vote",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "House",
+    "date": "2026-09-16",
+    "stage": "Passage",
+    "text": "On motion to suspend the rules and pass the bill, as amended Agreed to by voice vote. (text: CR H5939-5940)",
+    "url": null
+   },
+   {
+    "method": "Unanimous consent",
+    "yea": null,
+    "nay": null,
+    "roll": null,
+    "chamber": "Senate",
+    "date": "2026-09-28",
+    "stage": "Passage",
+    "text": "Passed Senate without amendment by Unanimous Consent. (consideration: CR S5123)",
+    "url": null
+   }
+  ],
+  "milestones": [
+   {
+    "label": "Introduced",
+    "date": "2026-02-26"
+   },
+   {
+    "label": "Reported by committee",
+    "date": "2026-08-27"
+   },
+   {
+    "label": "Passage \u00b7 House",
+    "date": "2026-09-16"
+   },
+   {
+    "label": "Passage \u00b7 Senate",
+    "date": "2026-09-28"
+   },
+   {
+    "label": "Presented to the President",
+    "date": "2026-11-05"
+   },
+   {
+    "label": "Signed into law",
+    "date": "2026-11-10"
+   }
+  ],
+  "actionCount": 19,
+  "textUrls": {
+   "Enrolled Bill": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7730enr/uslm/BILLS-119hr7730enr.xml",
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7730enr/xml/BILLS-119hr7730enr.xml"
+   ],
+   "Received in Senate": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7730rds/xml/BILLS-119hr7730rds.xml"
+   ],
+   "Engrossed in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7730eh/xml/BILLS-119hr7730eh.xml"
+   ],
+   "Reported in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7730rh/xml/BILLS-119hr7730rh.xml"
+   ],
+   "Introduced in House": [
+    "https://www.govinfo.gov/content/pkg/BILLS-119hr7730ih/xml/BILLS-119hr7730ih.xml"
+   ]
+  },
+  "cbo": [],
+  "reports": [
+   "H. Rept. 119-783"
+  ],
+  "congressUrl": "https://www.congress.gov/bill/119th-congress/house-bill/7730"
  },
  {
   "id": "119-1",
